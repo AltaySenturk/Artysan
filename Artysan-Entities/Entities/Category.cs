@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Artysan_DAL.Entites
+namespace Artysan_Entities.Entites
 {
     public class Category
     {

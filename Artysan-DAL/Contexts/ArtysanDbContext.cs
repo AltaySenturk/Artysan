@@ -1,4 +1,4 @@
-﻿using Artysan_DAL.Entites;
+﻿using Artysan_Entities.Entites;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;

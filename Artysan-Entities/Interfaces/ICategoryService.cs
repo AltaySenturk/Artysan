@@ -1,4 +1,4 @@
-﻿using Artysan_Service.ViewModels;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Artysan_Service.Interfaces
+namespace Artysan_Entities.Interfaces
 {
 	public interface ICategoryService
 	{
-		Task<IEnumerable<CategoryViewModel>> GetAll();
+		//Task<IEnumerable<CategoryViewModel>> GetAll();
 	}
 }

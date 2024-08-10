@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Artysan_Service.Interfaces
+namespace Artysan_Entities.Interfaces
 {
 	public interface IEventService
 	{

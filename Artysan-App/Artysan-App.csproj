@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Artysan-DAL\Artysan-DAL.csproj" />
     <ProjectReference Include="..\Artysan-Service\Artysan-Service.csproj" />
   </ItemGroup>
 

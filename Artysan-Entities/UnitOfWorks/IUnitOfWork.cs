@@ -1,11 +1,11 @@
-﻿using Artysan_Service.Interfaces;
+﻿using Artysan_Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Artysan_Service.UnitOfWorks
+namespace Artysan_Entities.UnitOfWorks
 {
 	public interface IUnitOfWork : IDisposable
 	{

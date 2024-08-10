@@ -1,5 +1,5 @@
 ﻿using Artysan_DAL.Contexts;
-using Artysan_Service.Interfaces;
+using Artysan_Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

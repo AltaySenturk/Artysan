@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Artysan-App", "Artysan-App\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{99419F8E-CE4B-45F3-9B99-47C21EF83E23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artysan-Entities", "Artysan-Entities\Artysan-Entities.csproj", "{6CB95DCA-0D7B-4812-93ED-E51FD0F26C14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,14 +37,19 @@ Global
 		{3856B228-CEB9-4F78-B754-79072B256763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3856B228-CEB9-4F78-B754-79072B256763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3856B228-CEB9-4F78-B754-79072B256763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB95DCA-0D7B-4812-93ED-E51FD0F26C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB95DCA-0D7B-4812-93ED-E51FD0F26C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB95DCA-0D7B-4812-93ED-E51FD0F26C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB95DCA-0D7B-4812-93ED-E51FD0F26C14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7B4F12E2-B8D1-4D98-B58D-2BAC094F46ED} = {72E4323D-7EC0-4DF4-8562-07F3C369123B}
-		{284FC2D8-0451-4CD0-A1EB-B9D85681697D} = {335BD5B2-B410-436C-BF94-36D666625697}
+		{284FC2D8-0451-4CD0-A1EB-B9D85681697D} = {72E4323D-7EC0-4DF4-8562-07F3C369123B}
 		{3856B228-CEB9-4F78-B754-79072B256763} = {C7A9890E-BC35-489E-8139-78349F61DDEC}
+		{6CB95DCA-0D7B-4812-93ED-E51FD0F26C14} = {335BD5B2-B410-436C-BF94-36D666625697}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F8F6189-5A01-42C8-8CDB-7F8EB29FD194}

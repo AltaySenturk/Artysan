@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Artysan-Service\Artysan-Service.csproj" />
+    <ProjectReference Include="..\Artysan-Entities\Artysan-Entities.csproj" />
   </ItemGroup>
 
 </Project>

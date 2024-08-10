@@ -1,11 +1,11 @@
-﻿using Artysan_DAL.Entites;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Artysan_Entities.Interfaces;
 
-namespace Artysan_DAL.ViewModels
+namespace Artysan_Entities.ViewModels
 {
 	public class EventArtistViewModel
 	{

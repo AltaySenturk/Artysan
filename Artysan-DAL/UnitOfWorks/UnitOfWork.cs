@@ -1,7 +1,7 @@
 ﻿using Artysan_DAL.Contexts;
 using Artysan_DAL.Repositories;
-using Artysan_Service.Interfaces;
-using Artysan_Service.UnitOfWorks;
+using Artysan_Entities.Interfaces;
+using Artysan_Entities.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Linq;

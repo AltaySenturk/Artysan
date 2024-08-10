@@ -1,4 +1,5 @@
-﻿using Artysan_Service.ViewModels;
+﻿using Artysan_Entities.Entites;
+using Artysan_Entities.ViewModels;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Artysan_Service.Mapping
 	{
         public MappingProfile()
         {
-            //CreateMap<Category, CategoryViewModel>().ReverseMap();
+            CreateMap<Category, CategoryViewModel>().ReverseMap();
         }
     }
 }
