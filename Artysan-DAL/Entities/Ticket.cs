@@ -8,7 +8,7 @@ namespace Artysan_DAL.Entites
 {
     public class Ticket
     {
-         public int Id { get; set; }
+        public int Id { get; set; }
 
         public string? TicketName { get; set; }
         public decimal? Price { get; set; }
