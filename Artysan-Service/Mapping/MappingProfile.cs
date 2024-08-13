@@ -14,6 +14,7 @@ namespace Artysan_Service.Mapping
         public MappingProfile()
         {
             CreateMap<Category, CategoryViewModel>().ReverseMap();
+            CreateMap<Customer, CustomerViewModel>().ReverseMap();  
         }
     }
 }

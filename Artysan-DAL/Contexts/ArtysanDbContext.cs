@@ -1,4 +1,6 @@
-﻿using Artysan_Entities.Entites;
+﻿using Artysan_DAL.Models;
+using Artysan_Entities.Entites;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -9,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Artysan_DAL.Contexts
 {
-    public class ArtysanDbContext : DbContext
+    public class ArtysanDbContext : IdentityDbContext<AppUser, AppRole, int>
     {
-        public ArtysanDbContext(DbContextOptions options) : base(options) { }
+        public ArtysanDbContext(DbContextOptions<ArtysanDbContext> options) : base(options) { }
 
         DbSet<Event> events { get; set; }
         DbSet<Artist> artists { get; set; }

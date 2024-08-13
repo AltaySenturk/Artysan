@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Artysan_DAL.Migrations
 {
     [DbContext(typeof(ArtysanDbContext))]
-    [Migration("20240809194320_Initial")]
+    [Migration("20240813195526_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -25,7 +25,115 @@ namespace Artysan_DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Artist", b =>
+            modelBuilder.Entity("Artysan_DAL.Models.AppRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Artysan_DAL.Models.AppUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Artysan_Entities.Entites.Artist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +192,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Category", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Category", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +240,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Customer", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -215,7 +323,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Event", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -307,7 +415,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventArtist", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventArtist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -362,7 +470,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventSale", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventSale", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -439,7 +547,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventSaleDetail", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventSaleDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -510,7 +618,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Location", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -569,7 +677,7 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Ticket", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Ticket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -620,17 +728,120 @@ namespace Artysan_DAL.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Event", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Artysan_DAL.Entites.Category", "Category")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Artysan_Entities.Entites.Event", b =>
+                {
+                    b.HasOne("Artysan_Entities.Entites.Category", "Category")
                         .WithMany("Events")
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("Artysan_DAL.Entites.Location", "Location")
+                    b.HasOne("Artysan_Entities.Entites.Location", "Location")
                         .WithMany("Events")
                         .HasForeignKey("LocationId");
 
-                    b.HasOne("Artysan_DAL.Entites.Ticket", null)
+                    b.HasOne("Artysan_Entities.Entites.Ticket", null)
                         .WithMany("Events")
                         .HasForeignKey("TicketId");
 
@@ -639,15 +850,15 @@ namespace Artysan_DAL.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventArtist", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventArtist", b =>
                 {
-                    b.HasOne("Artysan_DAL.Entites.Artist", "Artist")
+                    b.HasOne("Artysan_Entities.Entites.Artist", "Artist")
                         .WithMany()
                         .HasForeignKey("ArtistId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Artysan_DAL.Entites.Event", "Event")
+                    b.HasOne("Artysan_Entities.Entites.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId");
 
@@ -656,20 +867,20 @@ namespace Artysan_DAL.Migrations
                     b.Navigation("Event");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventSale", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventSale", b =>
                 {
-                    b.HasOne("Artysan_DAL.Entites.Event", null)
+                    b.HasOne("Artysan_Entities.Entites.Event", null)
                         .WithMany("EventSales")
                         .HasForeignKey("EventId");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventSaleDetail", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventSaleDetail", b =>
                 {
-                    b.HasOne("Artysan_DAL.Entites.Event", "Event")
+                    b.HasOne("Artysan_Entities.Entites.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId");
 
-                    b.HasOne("Artysan_DAL.Entites.EventSale", "EventSale")
+                    b.HasOne("Artysan_Entities.Entites.EventSale", "EventSale")
                         .WithMany("EventSaleDetails")
                         .HasForeignKey("EventSaleId");
 
@@ -678,27 +889,78 @@ namespace Artysan_DAL.Migrations
                     b.Navigation("EventSale");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Category", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+                {
+                    b.HasOne("Artysan_DAL.Models.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+                {
+                    b.HasOne("Artysan_DAL.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+                {
+                    b.HasOne("Artysan_DAL.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.HasOne("Artysan_DAL.Models.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Artysan_DAL.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+                {
+                    b.HasOne("Artysan_DAL.Models.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Artysan_Entities.Entites.Category", b =>
                 {
                     b.Navigation("Events");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Event", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Event", b =>
                 {
                     b.Navigation("EventSales");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.EventSale", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.EventSale", b =>
                 {
                     b.Navigation("EventSaleDetails");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Location", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Location", b =>
                 {
                     b.Navigation("Events");
                 });
 
-            modelBuilder.Entity("Artysan_DAL.Entites.Ticket", b =>
+            modelBuilder.Entity("Artysan_Entities.Entites.Ticket", b =>
                 {
                     b.Navigation("Events");
                 });

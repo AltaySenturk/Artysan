@@ -1,4 +1,5 @@
 using Artysan_DAL.Contexts;
+using Artysan_Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,25 +11,26 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ArtysanDbContext>(
         options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"))
     );
+builder.Services.AddExtensions();
 var app = builder.Build();
 
-#region AutoMigration
-using (var scope = app.Services.CreateScope())
-{
-    using (var appContext = scope.ServiceProvider.GetRequiredService<ArtysanDbContext>())
-    {
-        try
-        {
-            appContext.Database.Migrate();
-        }
-        catch (Exception ex)
-        {
-            // Log errors or do anything you think it's needed
-            throw;
-        }
-    }
-}
-#endregion
+//#region AutoMigration
+//using (var scope = app.Services.CreateScope())
+//{
+//    using (var appContext = scope.ServiceProvider.GetRequiredService<ArtysanDbContext>())
+//    {
+//        try
+//        {
+//            appContext.Database.Migrate();
+//        }
+//        catch (Exception ex)
+//        {
+//            // Log errors or do anything you think it's needed
+//            throw;
+//        }
+//    }
+//}
+//#endregion
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
