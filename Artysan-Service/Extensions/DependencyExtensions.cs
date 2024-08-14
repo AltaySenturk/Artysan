@@ -1,8 +1,10 @@
 ﻿using Artysan_DAL.Contexts;
 using Artysan_DAL.Models;
 using Artysan_DAL.UnitOfWorks;
+using Artysan_Entities.Interfaces;
 using Artysan_Entities.UnitOfWorks;
 using Artysan_Service.Mapping;
+using Artysan_Service.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -31,6 +33,7 @@ namespace Artysan_Service.Extensions
                    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1); //default 5
                }).AddEntityFrameworkStores<ArtysanDbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(ICustomerService), typeof(CustomerService));
             services.AddAutoMapper(typeof(MappingProfile));
         }
 
