@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Artysan_Entities.Interfaces;
 
 namespace Artysan_Entities.ViewModels
 {
-    public class RegisterViewModel
-    {
-    	public int Id { get; set; }
+	public class UserViewModel
+	{
+		public int Id { get; set; }
 		[Required(ErrorMessage = "İsim alanı boş geçilemez!")]
 		public string FirstName { get; set; }
 		[Required(ErrorMessage = "Soyisim alanı boş geçilemez!")]
@@ -22,14 +23,5 @@ namespace Artysan_Entities.ViewModels
 		[Required(ErrorMessage = "Email adresi boş geçilemez!")]
 		[EmailAddress(ErrorMessage = "Email formatına uygun değil!")]
 		public string Email { get; set; }
-		[Required(ErrorMessage = "Şifre alanı boş geçilemez!")]
-		[Display(Name = "Şifre")]
-		[DataType(DataType.Password)]
-		public string Password { get; set; }
-		[Required(ErrorMessage = "Tekrar Şifresi boş geçilemez!")]
-		[Display(Name = "Şifre Tekrar")]
-		[DataType(DataType.Password)]
-		[Compare("Password", ErrorMessage = "Şifreler uyuşmuyor!")]
-		public string ConfirmPassword { get; set; }
-    }
+	}
 }

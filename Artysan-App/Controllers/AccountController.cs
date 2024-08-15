@@ -6,14 +6,14 @@ namespace Artysan_App.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ICustomerService _accountService;
+       private readonly ICustomerService _accountService;
 
-        public AccountController(ICustomerService accountService)
-        {
-            _accountService = accountService;
-        }
+		public AccountController(ICustomerService accountService)
+		{
+			_accountService = accountService;
+		}
 
-      public IActionResult Index()
+		public IActionResult Index()
 		{
 			return View();
 		}
@@ -44,28 +44,28 @@ namespace Artysan_App.Controllers
             }
 			return View(model);
 		}
-        public IActionResult Register()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            string msg = await _accountService.CreateUserAsync(model);
-            if (msg == "OK")
-            {
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                ModelState.AddModelError("", msg);
-            }
-            return View(model);
-        }
-        public async Task<IActionResult> Logout()
-        {
-            await _accountService.SignOutAsync();
-            return RedirectToAction("Index", "Home");
-        }
-    }
+		public IActionResult Register()
+		{
+			return View();
+		}
+		[HttpPost]
+		public async Task<IActionResult> Register(RegisterViewModel model)
+		{
+			string msg = await _accountService.CreateUserAsync(model);
+			if(msg == "OK")
+			{
+				return RedirectToAction("Login");
+			}
+			else
+			{
+				ModelState.AddModelError("", msg);
+			}
+			return View(model);
+		}
+		public async Task<IActionResult> Logout()
+		{
+			await _accountService.SignOutAsync();
+			return RedirectToAction("Index", "Home");
+		}
+	}
 }

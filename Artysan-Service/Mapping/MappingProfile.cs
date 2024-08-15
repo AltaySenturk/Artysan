@@ -1,4 +1,5 @@
-﻿using Artysan_Entities.Entites;
+﻿using Artysan_DAL.Models;
+using Artysan_Entities.Entites;
 using Artysan_Entities.ViewModels;
 using AutoMapper;
 using System;
@@ -16,7 +17,7 @@ namespace Artysan_Service.Mapping
             
             CreateMap<Event, EventViewModel>();
             CreateMap<Category, CategoryViewModel>().ReverseMap();
-            CreateMap<Customer, CustomerViewModel>().ReverseMap();  
+            CreateMap<AppUser, UserViewModel>().ReverseMap();
             CreateMap<EventArtist, EventArtistViewModel>().ReverseMap();
         }
     }

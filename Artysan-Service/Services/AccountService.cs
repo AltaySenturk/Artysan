@@ -11,16 +11,14 @@ using System.Threading.Tasks;
 
 namespace Artysan_Service.Services
 {
-
-
-    public class CustomerService : ICustomerService
-    {
-        private readonly UserManager<AppUser> _userManager;
+ public class AccountService : ICustomerService
+	{
+		private readonly UserManager<AppUser> _userManager;
 		private readonly RoleManager<AppRole> _roleManager;
 		private readonly SignInManager<AppUser> _signInManager;
 		private readonly IMapper _mapper;
 
-		public CustomerService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IMapper mapper)
+		public AccountService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, SignInManager<AppUser> signInManager, IMapper mapper)
 		{
 			_userManager = userManager;
 			_roleManager = roleManager;
@@ -53,10 +51,10 @@ namespace Artysan_Service.Services
 			}
 			return message;
 		}
-		public async Task<CustomerViewModel> Find(string username)
+		public async Task<UserViewModel> Find(string username)
 		{
 			var user = await _userManager.FindByNameAsync(username);
-			return _mapper.Map<CustomerViewModel>(user);
+			return _mapper.Map<UserViewModel>(user);
 		}
 		public async Task<string> FindByNameAsync(LoginViewModel model)
 		{
@@ -89,10 +87,9 @@ namespace Artysan_Service.Services
 			throw new NotImplementedException();
 		}
 
-		public Task<List<CustomerViewModel>> GetAllUsers()
+		public Task<List<UserViewModel>> GetAllUsers()
 		{
 			throw new NotImplementedException();
 		}
 	}
-    
-    }
+}
