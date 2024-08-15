@@ -13,6 +13,8 @@ namespace Artysan_Service.Mapping
 	{
         public MappingProfile()
         {
+            
+            CreateMap<Event, EventViewModel>();
             CreateMap<Category, CategoryViewModel>().ReverseMap();
             CreateMap<Customer, CustomerViewModel>().ReverseMap();  
             CreateMap<EventArtist, EventArtistViewModel>().ReverseMap();
