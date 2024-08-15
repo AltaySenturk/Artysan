@@ -13,37 +13,37 @@ namespace Artysan_App.Controllers
             _accountService = accountService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Login(string? ReturnUrl)
-        {
-            LoginViewModel model = new LoginViewModel()
-            {
-                ReturnUrl = ReturnUrl
-            };
-            return View(model);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
-            string msg = await _accountService.FindByNameAsync(model);
-            if (msg == "Kullanıcı bulunamadı!")
-            {
-                ModelState.AddModelError("", msg);
-                return View(model);
-            }
-            else if (msg == "OK")
-            {
-                return Redirect(model.ReturnUrl ?? "/Article/Index");
-            }
-            else
-            {
+      public IActionResult Index()
+		{
+			return View();
+		}
+		public IActionResult Login(string? ReturnUrl)
+		{
+			LoginViewModel model = new LoginViewModel()
+			{
+				ReturnUrl = ReturnUrl
+			};
+			return View(model);	
+		}
+		[HttpPost]
+		public async Task<IActionResult> Login(LoginViewModel model)
+		{
+			string msg = await _accountService.FindByNameAsync(model);
+			if(msg == "Kullanıcı bulunamadı!")
+			{
+				ModelState.AddModelError("", msg);
+				return View(model);
+			}
+			else if(msg == "OK")
+			{
+                return Redirect(model.ReturnUrl ?? "/Home/Index");
+			}
+			else
+			{
                 ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
             }
-            return View(model);
-        }
+			return View(model);
+		}
         public IActionResult Register()
         {
             return View();

@@ -50,7 +50,7 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
             <a href="#">Login</a>
-            <a asp-area=""asp-action="Register" asp-controller="Account">Register</a>
+            <a asp-area="" asp-action="Register" asp-controller="Account">Register</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -67,49 +67,49 @@
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <style>
-                        .header__menu {
+                        .header__menu {}
+
+                        .header__menu ul {
+                            list-style-type: none;
+                            padding: 0;
+                            margin: 0;
                         }
 
-                            .header__menu ul {
-                                list-style-type: none;
-                                padding: 0;
-                                margin: 0;
-                            }
+                        .header__menu li {
+                            display: inline-block;
+                            margin-right: 10px;
+                        }
 
-                            .header__menu li {
-                                display: inline-block;
-                                margin-right: 10px;
-                            }
+                        .header__menu a {
+                            color: white;
+                            text-decoration: none;
+                        }
 
-                            .header__menu a {
-                                color: white;
-                                text-decoration: none;
-                            }
+                        .header__menu .dropdown {
+                            display: none;
+                            position: absolute;
+                            background-color: #333;
+                            padding: 10px;
+                            list-style-type: none;
+                        }
 
-                            .header__menu .dropdown {
-                                display: none;
-                                position: absolute;
-                                background-color: #333;
-                                padding: 10px;
-                                list-style-type: none;
-                            }
+                        .header__menu li:hover .dropdown {
+                            display: block;
+                        }
 
-                            .header__menu li:hover .dropdown {
-                                display: block;
-                            }
+                        .header__menu .dropdown li {
+                            margin: 0;
+                        }
 
-                            .header__menu .dropdown li {
-                                margin: 0;
-                            }
-
-                            .header__menu .dropdown a {
-                                color: white;
-                            }
+                        .header__menu .dropdown a {
+                            color: white;
+                        }
                     </style>
                     <nav class="header__menu">
                         <ul>
                             <li class="nav-item" style="justify-content:center;">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                    asp-action="Index">Home</a>
                             </li>
                             <li><a href="#">Spor</a></li>
                             <li><a href="#">Konser</a></li>
@@ -138,8 +138,23 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a asp-area=""asp-action="Register" asp-controller="Account">Register</a>
+                	 @if (User.Identity.IsAuthenticated)
+                            {
+                            <span>Hoşgeldin @User.Identity.Name</span>
+                            
+                            <a asp-action="Logout" asp-controller="Account">Çıkış Yap</a>
+                
+                            }
+                            else
+                            {
+                                <a asp-action="Login" asp-controller="Account"> Üye Giriş
+                                </a>
+
+
+                                <a asp-action="Register" asp-controller="Account">Üye Kayıt
+                                </a>
+                          
+                            }
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
@@ -161,7 +176,7 @@
     <!-- Header Section End -->
     <form>
         <div class="form-row align-items-center " style="background-color: snow; justify-content:center;">
-            <div class="col-auto my-1" >
+            <div class="col-auto my-1">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Kategori seçiniz</label>
                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Choose...</option>
@@ -180,7 +195,7 @@
                 </select>
             </div>
             <div class="col-auto">
-       
+
                 <div class="date-picker-title">
                     <label class="mr-sm-2" for="datepicker">Tarih</label>
                 </div>
@@ -227,7 +242,8 @@
 
             <div class="row">
                 <div class="col-lg-6 p-0">
-                    <div class="categories__item categories__large__item set-bg" data-setbg="https://img.freepik.com/premium-photo/group-balls-sports-illustration-background-ai-generated_206846-3004.jpg">
+                    <div class="categories__item categories__large__item set-bg"
+                        data-setbg="https://img.freepik.com/premium-photo/group-balls-sports-illustration-background-ai-generated_206846-3004.jpg">
                         <div class="categories__text">
                             <h2 style=" color:snow;">Spor</h2>
                             <a style="color: snow;display: inline-block;" href="#">Shop now</a>
@@ -237,36 +253,49 @@
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                            <div class="categories__item set-bg" data-setbg="https://as1.ftcdn.net/v2/jpg/03/20/56/94/1000_F_320569480_mohiHpUxGFQv8nGE6DDnZvDWzTpgOEk0.jpg">
-                                <div class="categories__text" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                            <div class="categories__item set-bg"
+                                data-setbg="https://as1.ftcdn.net/v2/jpg/03/20/56/94/1000_F_320569480_mohiHpUxGFQv8nGE6DDnZvDWzTpgOEk0.jpg">
+                                <div class="categories__text"
+                                    style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                     <h4 style="color: snow; margin: 0;">Sinema</h4>
-                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop now</a>
+                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop
+                                        now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                            <div class="categories__item set-bg" data-setbg="https://media.istockphoto.com/id/1328201960/vector/two-theater-masks-comedy-and-drama-symbol.jpg?s=612x612&w=0&k=20&c=jsmOqB1ojCFrMCvpWmpwlwKetm2zFdaM_4_RfkhHZCc=">
-                                <div class="categories__text" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                            <div class="categories__item set-bg"
+                                data-setbg="https://media.istockphoto.com/id/1328201960/vector/two-theater-masks-comedy-and-drama-symbol.jpg?s=612x612&w=0&k=20&c=jsmOqB1ojCFrMCvpWmpwlwKetm2zFdaM_4_RfkhHZCc=">
+                                <div class="categories__text"
+                                    style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                     <h4 style="color: snow; margin: 0;">Tiyatro</h4>
-                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop now</a>
+                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop
+                                        now</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 p-0" style="position: relative;">
-                            <div class="categories__item set-bg" data-setbg="https://www.kampustenevar.com/upload/Metaverse_Konserleri_-_TeknoCase_66725.png">
-                                <div class="categories__text" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                            <div class="categories__item set-bg"
+                                data-setbg="https://www.kampustenevar.com/upload/Metaverse_Konserleri_-_TeknoCase_66725.png">
+                                <div class="categories__text"
+                                    style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                     <h4 style="color: snow; margin: 0;">Konser</h4>
-                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop now</a>
+                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop
+                                        now</a>
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                            <div class="categories__item set-bg" data-setbg="https://as1.ftcdn.net/v2/jpg/04/34/66/54/1000_F_434665468_Xh0E3MdXPP2te5EpFDCWaqupkl4IIpBg.jpg" style="position: relative;">
-                                <div class="categories__text" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                            <div class="categories__item set-bg"
+                                data-setbg="https://as1.ftcdn.net/v2/jpg/04/34/66/54/1000_F_434665468_Xh0E3MdXPP2te5EpFDCWaqupkl4IIpBg.jpg"
+                                style="position: relative;">
+                                <div class="categories__text"
+                                    style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                     <h4 style="color: snow; margin: 0;">Workshops</h4>
-                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop now</a>
+                                    <a style="color: snow; display: inline-block; margin-top: 10px;" href="#">Shop
+                                        now</a>
                                 </div>
                             </div>
                         </div>
