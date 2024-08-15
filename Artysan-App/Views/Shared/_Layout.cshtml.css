@@ -6,6 +6,10 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+body, .main-container {
+  transition: none !important;
+  animation: none !important;
+}
 
 a {
   color: #0077cc;
