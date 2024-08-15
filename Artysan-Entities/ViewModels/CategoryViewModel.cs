@@ -9,7 +9,7 @@ namespace Artysan_Entities.ViewModels
 {
 	public class CategoryViewModel
 	{
-		public int id { get; set; }
+		public int Id { get; set; }
 		public string? CatName { get; set; }
 		public string? CatDescription { get; set; }
 	}
