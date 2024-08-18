@@ -24,4 +24,9 @@
     <None Include="wwwroot\img\categories\.DS_Store" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
 </Project>
