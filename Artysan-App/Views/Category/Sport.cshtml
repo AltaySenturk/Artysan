@@ -1,0 +1,16 @@
+@model List<EventViewModel>
+
+    @{
+        Layout= "_Layoutfake";
+    }
+
+<h3> Sport Category</h3>
+
+@foreach(var item in Model)
+{ 
+    <hr/>
+    @item.Id;
+    @item.Name;
+    
+}
+

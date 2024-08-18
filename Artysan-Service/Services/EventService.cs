@@ -12,7 +12,6 @@ namespace Artysan_Service.Services
 {
     public class EventService : IEventService
     {
-        
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
 
@@ -22,34 +21,36 @@ namespace Artysan_Service.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<EventArtistViewModel>> GetAll()
+        public async Task<IEnumerable<EventViewModel>> GetAll()
         {
-            var list =await _uow.GetRepository<EventArtist>().GetAll();
-            return _mapper.Map<IEnumerable<EventArtistViewModel>>(list);
+            var list =await _uow.GetRepository<Event>().GetAll();
+            return _mapper.Map<IEnumerable<EventViewModel>>(list);
 
         }
-        public async Task Add(EventArtistViewModel model)
+        public async Task Add(EventViewModel model)
         {
-          var eventArtist = _mapper.Map<EventArtist>(model);
-          await _uow.GetRepository<EventArtist>().Add(eventArtist);
+          var eventArtist = _mapper.Map<Event>(model);
+          await _uow.GetRepository<Event>().Add(eventArtist);
         }
 
-        public async Task<EventArtistViewModel> Get(int id)
+        public async Task<EventViewModel> Get(int id)
         {
-              var eventt = await _uow.GetRepository<EventArtist>().GetByIdAsync(id);
-            return _mapper.Map<EventArtistViewModel>(eventt);;
+              var eventt = await _uow.GetRepository<Event >().GetByIdAsync(id);
+            return _mapper.Map<EventViewModel>(eventt);;
         }
 
-        public async Task Update(EventArtistViewModel model)
+        public async Task Update(EventViewModel model)
         {
-             var eventArtist = _mapper.Map<EventArtist>(model);
-            _uow.GetRepository<EventArtist>().Update(eventArtist);
+             var eventArtist = _mapper.Map<Event>(model);
+            _uow.GetRepository<Event>().Update(eventArtist);
         }
 
         public async Task Delete(int Id)
         {
-            var eventArtist = await _uow.GetRepository<EventArtist>().GetByIdAsync(Id);
-           _uow.GetRepository<EventArtist>().Delete(eventArtist);
+            var eventArtist = await _uow.GetRepository<Event>().GetByIdAsync(Id);
+           _uow.GetRepository<Event>().Delete(eventArtist);
         }
+        
     }
-}
+} 
+    

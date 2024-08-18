@@ -11,6 +11,7 @@ namespace Artysan_Entities.Interfaces
 {
 	public interface ICategoryService
 	{
+
 	  Task<IEnumerable<CategoryViewModel>> GetAll();
 	}
 }
