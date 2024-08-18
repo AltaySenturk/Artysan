@@ -11,12 +11,12 @@ using Microsoft.Extensions.Logging;
 namespace Artysan_App.Controllers
 {
 
-    public class CategoryController : Controller
+    public class EventController : Controller
     {
         private readonly ICategoryService _categoryService;
         private readonly IEventService _eventService;
 
-        public CategoryController(ICategoryService categoryService, IEventService eventService)
+        public EventController(ICategoryService categoryService, IEventService eventService)
         {
             _categoryService = categoryService;
             _eventService = eventService;
