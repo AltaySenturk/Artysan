@@ -9,7 +9,7 @@ namespace Artysan_Entities.Entites
 {
     public class Category
     {
-           [Key]
+        [Key]
         public int id { get; set; }
         public string? CatName { get; set; }
         public string? CatDescription { get; set; }

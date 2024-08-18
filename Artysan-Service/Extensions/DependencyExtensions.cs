@@ -28,7 +28,7 @@ namespace Artysan_Service.Extensions
                    opt.Password.RequireDigit = false;
                    opt.User.RequireUniqueEmail = true;  
 
-                   opt.User.AllowedUserNameCharacters = "abcdefghijklmnoprstuvyz0123456789_-"; //kullanıcı adı girilirken bunlardan başka birkarakter girilmesine izin vermez.
+                   opt.User.AllowedUserNameCharacters = "ABCDEFGHIJKLMNOPRSTUVYWZabcdefghijklmnoprstuvwyz0123456789_-"; //kullanıcı adı girilirken bunlardan başka birkarakter girilmesine izin vermez.
                    opt.Lockout.MaxFailedAccessAttempts = 3;  //default 5
                    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1); //default 5
                }).AddEntityFrameworkStores<ArtysanDbContext>();
