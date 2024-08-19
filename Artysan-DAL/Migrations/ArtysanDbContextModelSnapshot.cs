@@ -338,7 +338,7 @@ namespace Artysan_DAL.Migrations
                             Id = 1,
                             CategoryId = 1,
                             EventDate = "21.08.2024",
-                            ImageUrl = "/img/Concert/resim.jpg",
+                            ImageUrl = "/img/Concert/hande.jpeg",
                             LocationId = 1,
                             Name = "POP Gecesi Festivali",
                             Stock = 500
@@ -368,7 +368,7 @@ namespace Artysan_DAL.Migrations
                             Id = 4,
                             CategoryId = 4,
                             EventDate = "10.09.2024",
-                            ImageUrl = "../img/Cinema/dune.jpg",
+                            ImageUrl = "/img/Cinema/dune.jpg",
                             LocationId = 4,
                             Name = "Dune Çöl Gezegeni",
                             Stock = 500

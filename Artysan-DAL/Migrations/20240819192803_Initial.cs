@@ -401,10 +401,10 @@ namespace Artysan_DAL.Migrations
                 columns: new[] { "Id", "CategoryId", "EventDate", "ImageUrl", "LocationId", "Name", "Stock", "TicketId" },
                 values: new object[,]
                 {
-                    { 1, 1, "21.08.2024", "/img/Concert/resim.jpg", 1, "POP Gecesi Festivali", 500, null },
+                    { 1, 1, "21.08.2024", "/img/Concert/hande.jpeg", 1, "POP Gecesi Festivali", 500, null },
                     { 2, 2, "21.09.2024", "/img/Theatre/lukus.jpg", 2, "Lüküs Hayat", 500, null },
                     { 3, 3, "21.08.2024", "/img/Sport/gs.jpg", 3, "Galatasaray-Konyaspor", 500, null },
-                    { 4, 4, "10.09.2024", "../img/Cinema/dune.jpg", 4, "Dune Çöl Gezegeni", 500, null },
+                    { 4, 4, "10.09.2024", "/img/Cinema/dune.jpg", 4, "Dune Çöl Gezegeni", 500, null },
                     { 5, 5, "21.08.2024", "/img/Workshop/gandalf.jpg", 5, "Gandalf Heykel Workshop", 500, null },
                     { 6, 1, "15.12.2024", "/img/Concert/sezen.jpg", 6, "Sezen Aksu Yılbaşı Özel Konseri", 400, null },
                     { 7, 2, "05.01.2025", "/img/Theatre/hamlet.jpg", 7, "Hamlet", 300, null },
