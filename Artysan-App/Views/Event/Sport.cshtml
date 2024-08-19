@@ -7,7 +7,7 @@
 <h3> Sport Category</h3>
 <table class="table">
     <tr>
-        <th scope="col">The Artist</th>
+        <th style="visibility: hidden;" scope="col">The Artist</th>
         <th scope="col">Etkinlik Adı</th>
         <th scope="col">Etkinlik Tarihi</th>
         <th scope="col">Etkinlik Yeri</th>
@@ -18,10 +18,10 @@
         {
             <tr>
 
-                <td> <img style="max-height: 120px;" src="@Html.DisplayFor(modelItem => item.ImageUrl)"></td>
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.EventDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.Location.Venue)</td>
+                <td> <img style="max-height: 120px; align-items: center;" src="@Html.DisplayFor(modelItem => item.ImageUrl)"></td>
+                <td style="align-content: center;">@Html.DisplayFor(modelItem => item.Name)</td>
+                <td style="align-content: center;">@Html.DisplayFor(modelItem => item.EventDate)</td>
+                <td style="align-content: center;">@Html.DisplayFor(modelItem => item.Location.Venue)</td>
                 
 
 
