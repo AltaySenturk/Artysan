@@ -16,25 +16,29 @@ namespace Artysan_App.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IEventService _eventService;
 
+
+
         public EventController(ICategoryService categoryService, IEventService eventService)
         {
             _categoryService = categoryService;
             _eventService = eventService;
+
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public async Task<IActionResult> Sport(int? id=1)
+        public async Task<IActionResult> Sport(int? id)
         {
+            var cat = await _eventService.GetSportEvents(1);
+             return View(cat);
+            /*
             var cat = await _eventService.GetAll();
-            if(id != null)
+            if (id != null)
             {
-
-            cat = cat.Where(c => c.CategoryId == id).ToList();
-            }
-            return View(cat);
+                cat = cat.Where(c => c.CategoryId == id).ToList();
+            } */
 
 
         }

@@ -1,24 +1,36 @@
 @model List<EventViewModel>
 
-    @{
-        Layout= "_Layoutfake";
-    }
-
-<h3> Sport Category</h3>
-
-@foreach(var item in Model)
-{ 
-    <ul class="list-group w-50">
-    <li class="list-group-item align-items-center d-flex">
-        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 me-3"
-        style="background-color: hsl(330, 70%, 50%);" href="#!" role="button">
-            <i class="fab fa-instagram fa-2x"></i>
-        </a>
-          @item.Name
-    </li>
-    </ul>
-
-  
-    
+@{
+    Layout = "_Layoutfake";
 }
 
+<h3> Sport Category</h3>
+<table class="table">
+    <tr>
+        <th scope="col">The Artist</th>
+        <th scope="col">Etkinlik Adı</th>
+        <th scope="col">Etkinlik Tarihi</th>
+        <th scope="col">Etkinlik Yeri</th>
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td> <img style="max-height: 120px;" src="@Html.DisplayFor(modelItem => item.ImageUrl)"></td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.EventDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Location.Venue)</td>
+                
+
+
+            </tr>
+        }
+
+
+
+    </tbody>
+
+
+</table>

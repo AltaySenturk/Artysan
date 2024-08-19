@@ -27,7 +27,8 @@ namespace Artysan_Service.Services
             return _mapper.Map<IEnumerable<EventViewModel>>(list);
 
         }
-        public async Task Add(EventViewModel model)
+     
+         public async Task Add(EventViewModel model)
         {
           var eventArtist = _mapper.Map<Event>(model);
           await _uow.GetRepository<Event>().Add(eventArtist);
@@ -50,7 +51,23 @@ namespace Artysan_Service.Services
             var eventArtist = await _uow.GetRepository<Event>().GetByIdAsync(Id);
            _uow.GetRepository<Event>().Delete(eventArtist);
         }
-        
+
+        public async Task<IEnumerable<EventViewModel>> GetSportEvents(int Id)
+        {
+             var events = await _uow.GetRepository<Event>().GetAll();
+            var locations = await _uow.GetRepository<Location>().GetAll();
+
+            var sportEvents = events.Where(e => e.CategoryId == Id);
+            var eventViewModels = _mapper.Map<IEnumerable<EventViewModel>>(sportEvents);
+
+            foreach (var eventViewModel in eventViewModels)
+            {
+                eventViewModel.Location = _mapper.Map<LocationViewModel>(
+                    locations.FirstOrDefault(l => l.Id == eventViewModel.LocationId));
+            }
+
+            return eventViewModels;
+        }
     }
 } 
     

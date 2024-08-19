@@ -17,6 +17,7 @@ namespace Artysan_Service.Mapping
             
             CreateMap<Event, EventViewModel>();
             CreateMap<Category, CategoryViewModel>().ReverseMap();
+             CreateMap<Location, LocationViewModel>().ReverseMap();
             CreateMap<AppUser, UserViewModel>().ReverseMap();
             CreateMap<EventArtist, EventArtistViewModel>().ReverseMap();
             CreateMap<AppRole, RoleViewModel>().ReverseMap();

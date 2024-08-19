@@ -11,6 +11,7 @@ namespace Artysan_Entities.Interfaces
 	public interface IEventService
 	{
 		 Task<IEnumerable<EventViewModel>> GetAll();
+		  Task<IEnumerable<EventViewModel>> GetSportEvents(int Id);
         Task<EventViewModel> Get(int id);
 
         Task Add(EventViewModel model);
