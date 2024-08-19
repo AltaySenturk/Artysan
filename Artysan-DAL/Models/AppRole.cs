@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace Artysan_DAL.Models
 {
 	public class AppRole : IdentityRole<int>
-	{
-        public string Name { get; set; }
+	{        
         public string Description { get; set; }
     }
 }

@@ -56,4 +56,9 @@ app.MapControllerRoute(
 			pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 		  );
 
+app.MapControllerRoute(
+            name: "area",
+            pattern: "{controller=Home}/{action=Index}/{area=Admin}"
+          );
+
 app.Run();

@@ -78,10 +78,29 @@ namespace Artysan_Service.Services
 		{
 			await _signInManager.SignOutAsync();
 		}
-		public Task<string> CreateRoleAsync(RoleViewModel model)
+		public async Task<string> CreateRoleAsync(RoleViewModel model)
 		{
-			throw new NotImplementedException();
-		}
+            string message = string.Empty;
+            AppRole role = new AppRole()
+            {
+                Name = model.Name,
+				Description = model.Description,
+            };
+            var identityResult = await _roleManager.CreateAsync(role);
+
+            if (identityResult.Succeeded)
+            {
+                message = "OK";
+            }
+            else
+            {
+                foreach (var error in identityResult.Errors)
+                {
+                    message = error.Description;
+                }
+            }
+            return message;
+        }
 
 		public async Task<List<RoleViewModel>> GetAllRoles()
 		{
