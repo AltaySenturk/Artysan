@@ -25,9 +25,14 @@ namespace Artysan_App.Controllers
 
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string? search)
         {
-            return View();
+            var list = await _eventService.GetAll();
+            if (search != null)
+			{
+				list = list.Where(a => a.Name.ToLower().Contains(search.ToLower())).ToList();
+			}
+            return View(list);
         }
         public async Task<IActionResult> Sport(int? id)
         {
@@ -39,8 +44,6 @@ namespace Artysan_App.Controllers
             {
                 cat = cat.Where(c => c.CategoryId == id).ToList();
             } */
-
-
-        }
+            }
     }
 }
