@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Artysan_DAL.Migrations
 {
     [DbContext(typeof(ArtysanDbContext))]
-    [Migration("20240819154000_Images")]
+    [Migration("20240819154129_Images")]
     partial class Images
     {
         /// <inheritdoc />
