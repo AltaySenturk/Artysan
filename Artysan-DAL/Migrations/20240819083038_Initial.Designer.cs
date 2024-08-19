@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Artysan_DAL.Migrations
 {
     [DbContext(typeof(ArtysanDbContext))]
-    [Migration("20240815192119_newInitial")]
-    partial class newInitial
+    [Migration("20240819083038_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -163,35 +163,62 @@ namespace Artysan_DAL.Migrations
                             Id = 1,
                             ArtImageUrl = "../img/resim.com",
                             ArtistLink = "www.example.com",
-                            ArtistName = "Hande"
+                            ArtistName = "Hande Yener"
                         },
                         new
                         {
                             Id = 2,
                             ArtImageUrl = "../img/resim.com",
-                            ArtistLink = "www.example.com",
-                            ArtistName = "Volkan Konak"
+                            ArtistLink = "www.example.com"
                         },
                         new
                         {
                             Id = 3,
                             ArtImageUrl = "../img/resim.com",
-                            ArtistLink = "www.example.com",
-                            ArtistName = "The White Buffalo"
+                            ArtistLink = "www.example.com"
                         },
                         new
                         {
                             Id = 4,
                             ArtImageUrl = "../img/resim.com",
-                            ArtistLink = "www.example.com",
-                            ArtistName = "maNga"
+                            ArtistLink = "www.example.com"
                         },
                         new
                         {
                             Id = 5,
                             ArtImageUrl = "../img/resim.com",
-                            ArtistLink = "www.example.com",
-                            ArtistName = "İbrahim Tatlıses"
+                            ArtistLink = "www.example.com"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ArtImageUrl = "../img/artists/sezen-aksu.jpg",
+                            ArtistLink = "www.example.com/sezen-aksu",
+                            ArtistName = "Sezen Aksu"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ArtImageUrl = "../img/theatre/hamlet.jpg",
+                            ArtistLink = "www.example.com/devlet-tiyatrolari"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ArtImageUrl = "../img/sports/basketball.jpg",
+                            ArtistLink = "www.example.com/turkish-basketball-league"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ArtImageUrl = "../img/directors/james-cameron.jpg",
+                            ArtistLink = "www.example.com/james-cameron"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ArtImageUrl = "../img/workshop/photoshop-icon.jpg",
+                            ArtistLink = "www.example.com/adobe-experts"
                         });
                 });
 
@@ -222,24 +249,51 @@ namespace Artysan_DAL.Migrations
                         new
                         {
                             id = 2,
-                            CatDescription = "Müzikal gösteri",
-                            CatName = "Konser"
+                            CatDescription = "Tiyatro oyunu",
+                            CatName = "Tiyatro"
                         },
                         new
                         {
                             id = 3,
-                            CatDescription = "Müzikal gösteri",
-                            CatName = "Konser"
+                            CatDescription = "Futbol Maçı",
+                            CatName = "Spor"
                         },
                         new
                         {
                             id = 4,
-                            CatName = "Konser"
+                            CatName = "Sinema"
                         },
                         new
                         {
                             id = 5,
+                            CatName = "Workshop"
+                        },
+                        new
+                        {
+                            id = 6,
                             CatName = "Konser"
+                        },
+                        new
+                        {
+                            id = 7,
+                            CatDescription = "Klasik tiyatro oyunu",
+                            CatName = "Tiyatro"
+                        },
+                        new
+                        {
+                            id = 8,
+                            CatDescription = "Basketbol Maçı",
+                            CatName = "Spor"
+                        },
+                        new
+                        {
+                            id = 9,
+                            CatName = "Sinema"
+                        },
+                        new
+                        {
+                            id = 10,
+                            CatName = "Workshop"
                         });
                 });
 
@@ -288,19 +342,19 @@ namespace Artysan_DAL.Migrations
                             Id = 1,
                             CategoryId = 1,
                             EventDate = "21.08.2024",
-                            ImageUrl = "../img/resim.jpg",
+                            ImageUrl = "../img/Concert/resim.jpg",
                             LocationId = 1,
-                            Name = "Rock Festivali",
+                            Name = "POP Gecesi Festivali",
                             Stock = 500
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 2,
-                            EventDate = "21.08.2024",
-                            ImageUrl = "../img/resim.jpg",
+                            EventDate = "21.09.2024",
+                            ImageUrl = "../img/Theatre/resim.jpg",
                             LocationId = 2,
-                            Name = "Rock Festivali",
+                            Name = "Lüküs Hayat",
                             Stock = 500
                         },
                         new
@@ -308,19 +362,19 @@ namespace Artysan_DAL.Migrations
                             Id = 3,
                             CategoryId = 3,
                             EventDate = "21.08.2024",
-                            ImageUrl = "../img/resim.jpg",
+                            ImageUrl = "../img/Sport/resim.jpg",
                             LocationId = 3,
-                            Name = "Rock Festivali",
+                            Name = "Galatasaray-Konyaspor",
                             Stock = 500
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 4,
-                            EventDate = "21.08.2024",
-                            ImageUrl = "../img/resim.jpg",
+                            EventDate = "10.09.2024",
+                            ImageUrl = "../img/Cinema/resim.jpg",
                             LocationId = 4,
-                            Name = "Rock Festivali",
+                            Name = "Dune Çöl Gezegeni",
                             Stock = 500
                         },
                         new
@@ -328,10 +382,60 @@ namespace Artysan_DAL.Migrations
                             Id = 5,
                             CategoryId = 5,
                             EventDate = "21.08.2024",
-                            ImageUrl = "../img/resim.jpg",
+                            ImageUrl = "../img/Workshop/resim.jpg",
                             LocationId = 5,
-                            Name = "Rock Festivali",
+                            Name = "Gandalf Heykel Workshop",
                             Stock = 500
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 1,
+                            EventDate = "15.12.2024",
+                            ImageUrl = "../img/Concert/sezen-aksu-concert.jpg",
+                            LocationId = 6,
+                            Name = "Sezen Aksu Yılbaşı Özel Konseri",
+                            Stock = 400
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 2,
+                            EventDate = "05.01.2025",
+                            ImageUrl = "../img/Theatre/hamlet-poster.jpg",
+                            LocationId = 7,
+                            Name = "Hamlet",
+                            Stock = 300
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 3,
+                            EventDate = "22.02.2025",
+                            ImageUrl = "../img/Sport/fenerbahce-efes.jpg",
+                            LocationId = 8,
+                            Name = "Fenerbahçe Beko - Anadolu Efes",
+                            Stock = 1000
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 4,
+                            EventDate = "10.03.2025",
+                            ImageUrl = "../img/Cinema/avatar3-poster.jpg",
+                            LocationId = 9,
+                            Name = "Avatar 3 Galası",
+                            Stock = 200
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 5,
+                            EventDate = "18.04.2025",
+                            ImageUrl = "../img/Workshop/photoshop-masterclass.jpg",
+                            LocationId = 10,
+                            Name = "Adobe Photoshop Masterclass",
+                            Stock = 50
                         });
                 });
 
@@ -387,6 +491,36 @@ namespace Artysan_DAL.Migrations
                             Id = 5,
                             ArtistId = 5,
                             EventId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ArtistId = 6,
+                            EventId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ArtistId = 7,
+                            EventId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ArtistId = 8,
+                            EventId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ArtistId = 9,
+                            EventId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ArtistId = 10,
+                            EventId = 10
                         });
                 });
 
@@ -464,6 +598,51 @@ namespace Artysan_DAL.Migrations
                             SalDate = "09.11.2024",
                             TotalPrice = 1000m,
                             TotalQuantity = 300
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CustomerId = 6,
+                            EventId = 6,
+                            SalDate = "01.10.2024",
+                            TotalPrice = 1500m,
+                            TotalQuantity = 250
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CustomerId = 7,
+                            EventId = 7,
+                            SalDate = "15.11.2024",
+                            TotalPrice = 600m,
+                            TotalQuantity = 150
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CustomerId = 8,
+                            EventId = 8,
+                            SalDate = "10.01.2025",
+                            TotalPrice = 1500m,
+                            TotalQuantity = 500
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CustomerId = 9,
+                            EventId = 9,
+                            SalDate = "01.02.2025",
+                            TotalPrice = 1500m,
+                            TotalQuantity = 100
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CustomerId = 10,
+                            EventId = 10,
+                            SalDate = "01.03.2025",
+                            TotalPrice = 3000m,
+                            TotalQuantity = 30
                         });
                 });
 
@@ -535,6 +714,46 @@ namespace Artysan_DAL.Migrations
                             EventSaleId = 5,
                             Quantity = 2,
                             UnitPrice = 400m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EventId = 6,
+                            EventSaleId = 6,
+                            Quantity = 2,
+                            UnitPrice = 750m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EventId = 7,
+                            EventSaleId = 7,
+                            Quantity = 3,
+                            UnitPrice = 200m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EventId = 8,
+                            EventSaleId = 8,
+                            Quantity = 5,
+                            UnitPrice = 300m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EventId = 9,
+                            EventSaleId = 9,
+                            Quantity = 10,
+                            UnitPrice = 150m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EventId = 10,
+                            EventSaleId = 10,
+                            Quantity = 3,
+                            UnitPrice = 1000m
                         });
                 });
 
@@ -579,21 +798,56 @@ namespace Artysan_DAL.Migrations
                             Id = 3,
                             EventUrl = "www.example.com",
                             LocImageUrl = "../img/resim.jpg",
-                            Venue = "İstanbul KüçükÇiftlik Park"
+                            Venue = "Rams Park Arena"
                         },
                         new
                         {
                             Id = 4,
                             EventUrl = "www.example.com",
                             LocImageUrl = "../img/resim.jpg",
-                            Venue = "Ankara CSO ADA"
+                            Venue = "PAribu Istinye Park"
                         },
                         new
                         {
                             Id = 5,
                             EventUrl = "www.example.com",
                             LocImageUrl = "../img/resim.jpg",
-                            Venue = "Gaziantep Gaün Açıkhava Sahnesi"
+                            Venue = "Istanbul Workshop"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EventUrl = "www.example.com/sezen-aksu-izmir",
+                            LocImageUrl = "../img/izmir-kulturpark.jpg",
+                            Venue = "İzmir Kültürpark Açıkhava Tiyatrosu"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EventUrl = "www.example.com/hamlet-ankara",
+                            LocImageUrl = "../img/ankara-devlet-tiyatrosu.jpg",
+                            Venue = "Ankara Devlet Tiyatrosu"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EventUrl = "www.example.com/fenerbahce-efes",
+                            LocImageUrl = "../img/ulker-sports-arena.jpg",
+                            Venue = "Ülker Sports Arena"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EventUrl = "www.example.com/avatar3-premiere",
+                            LocImageUrl = "../img/cinemaximum-zorlu.jpg",
+                            Venue = "Cinemaximum Zorlu Center"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EventUrl = "www.example.com/photoshop-masterclass",
+                            LocImageUrl = "../img/atasehir-sanat-merkezi.jpg",
+                            Venue = "Ataşehir Sanat Merkezi"
                         });
                 });
 
@@ -645,6 +899,36 @@ namespace Artysan_DAL.Migrations
                             Id = 5,
                             Price = 500m,
                             TicketName = "Standart"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Price = 750m,
+                            TicketName = "VIP"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Price = 200m,
+                            TicketName = "Öğrenci"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Price = 300m,
+                            TicketName = "Tribün"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Price = 150m,
+                            TicketName = "Gold Class"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Price = 1000m,
+                            TicketName = "Premium"
                         });
                 });
 
