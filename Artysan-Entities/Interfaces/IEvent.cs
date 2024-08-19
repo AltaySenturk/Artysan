@@ -10,11 +10,15 @@ namespace Artysan_Entities.Interfaces
 {
 	public interface IEventService
 	{
-		 Task<IEnumerable<EventViewModel>> GetAll();
-		  Task<IEnumerable<EventViewModel>> GetSportEvents(int Id);
-        Task<EventViewModel> Get(int id);
+		Task<IEnumerable<EventViewModel>> GetAll();
+		Task<IEnumerable<EventViewModel>> GetSportEvents(int Id);
+		Task<IEnumerable<EventViewModel>> GetTheatreEvents(int Id);
+		Task<IEnumerable<EventViewModel>> GetCinemaEvents(int Id);
+		Task<IEnumerable<EventViewModel>> GetConcertEvents(int Id);
+		Task<IEnumerable<EventViewModel>> GetWorkshopEvents(int Id);
+		Task<EventViewModel> Get(int id);
 
-        Task Add(EventViewModel model);
+		Task Add(EventViewModel model);
 		Task Update(EventViewModel model);
 		Task Delete(int Id);
 
