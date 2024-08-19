@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Artysan_DAL.Migrations
 {
     [DbContext(typeof(ArtysanDbContext))]
-    [Migration("20240819083038_Initial")]
+    [Migration("20240819161507_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -42,7 +42,6 @@ namespace Artysan_DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -174,13 +173,13 @@ namespace Artysan_DAL.Migrations
                         new
                         {
                             Id = 3,
-                            ArtImageUrl = "../img/resim.com",
+                            ArtImageUrl = "/img/resim.com",
                             ArtistLink = "www.example.com"
                         },
                         new
                         {
                             Id = 4,
-                            ArtImageUrl = "../img/resim.com",
+                            ArtImageUrl = "/img/resim.com",
                             ArtistLink = "www.example.com"
                         },
                         new
@@ -342,7 +341,7 @@ namespace Artysan_DAL.Migrations
                             Id = 1,
                             CategoryId = 1,
                             EventDate = "21.08.2024",
-                            ImageUrl = "../img/Concert/resim.jpg",
+                            ImageUrl = "/img/Concert/resim.jpg",
                             LocationId = 1,
                             Name = "POP Gecesi Festivali",
                             Stock = 500
@@ -352,7 +351,7 @@ namespace Artysan_DAL.Migrations
                             Id = 2,
                             CategoryId = 2,
                             EventDate = "21.09.2024",
-                            ImageUrl = "../img/Theatre/resim.jpg",
+                            ImageUrl = "/img/Theatre/lukus.jpg",
                             LocationId = 2,
                             Name = "Lüküs Hayat",
                             Stock = 500
@@ -362,7 +361,7 @@ namespace Artysan_DAL.Migrations
                             Id = 3,
                             CategoryId = 3,
                             EventDate = "21.08.2024",
-                            ImageUrl = "../img/Sport/resim.jpg",
+                            ImageUrl = "/img/Sport/gs.jpg",
                             LocationId = 3,
                             Name = "Galatasaray-Konyaspor",
                             Stock = 500
@@ -372,7 +371,7 @@ namespace Artysan_DAL.Migrations
                             Id = 4,
                             CategoryId = 4,
                             EventDate = "10.09.2024",
-                            ImageUrl = "../img/Cinema/resim.jpg",
+                            ImageUrl = "../img/Cinema/dune.jpg",
                             LocationId = 4,
                             Name = "Dune Çöl Gezegeni",
                             Stock = 500
@@ -382,7 +381,7 @@ namespace Artysan_DAL.Migrations
                             Id = 5,
                             CategoryId = 5,
                             EventDate = "21.08.2024",
-                            ImageUrl = "../img/Workshop/resim.jpg",
+                            ImageUrl = "/img/Workshop/gandalf.jpg",
                             LocationId = 5,
                             Name = "Gandalf Heykel Workshop",
                             Stock = 500
@@ -392,7 +391,7 @@ namespace Artysan_DAL.Migrations
                             Id = 6,
                             CategoryId = 1,
                             EventDate = "15.12.2024",
-                            ImageUrl = "../img/Concert/sezen-aksu-concert.jpg",
+                            ImageUrl = "/img/Concert/sezen.jpg",
                             LocationId = 6,
                             Name = "Sezen Aksu Yılbaşı Özel Konseri",
                             Stock = 400
@@ -402,7 +401,7 @@ namespace Artysan_DAL.Migrations
                             Id = 7,
                             CategoryId = 2,
                             EventDate = "05.01.2025",
-                            ImageUrl = "../img/Theatre/hamlet-poster.jpg",
+                            ImageUrl = "/img/Theatre/hamlet.jpg",
                             LocationId = 7,
                             Name = "Hamlet",
                             Stock = 300
@@ -412,7 +411,7 @@ namespace Artysan_DAL.Migrations
                             Id = 8,
                             CategoryId = 3,
                             EventDate = "22.02.2025",
-                            ImageUrl = "../img/Sport/fenerbahce-efes.jpg",
+                            ImageUrl = "/img/Sport/efes.jpg",
                             LocationId = 8,
                             Name = "Fenerbahçe Beko - Anadolu Efes",
                             Stock = 1000
@@ -422,7 +421,7 @@ namespace Artysan_DAL.Migrations
                             Id = 9,
                             CategoryId = 4,
                             EventDate = "10.03.2025",
-                            ImageUrl = "../img/Cinema/avatar3-poster.jpg",
+                            ImageUrl = "/img/Cinema/avatar.jpg",
                             LocationId = 9,
                             Name = "Avatar 3 Galası",
                             Stock = 200
@@ -432,7 +431,7 @@ namespace Artysan_DAL.Migrations
                             Id = 10,
                             CategoryId = 5,
                             EventDate = "18.04.2025",
-                            ImageUrl = "../img/Workshop/photoshop-masterclass.jpg",
+                            ImageUrl = "/img/Workshop/psdw.jpg",
                             LocationId = 10,
                             Name = "Adobe Photoshop Masterclass",
                             Stock = 50
@@ -783,7 +782,7 @@ namespace Artysan_DAL.Migrations
                         {
                             Id = 1,
                             EventUrl = "www.example.com",
-                            LocImageUrl = "../img/resim.jpg",
+                            LocImageUrl = "/img/hande.jpeg",
                             Venue = "Ankara Oran Açıkhava Sahnesi"
                         },
                         new
@@ -797,21 +796,21 @@ namespace Artysan_DAL.Migrations
                         {
                             Id = 3,
                             EventUrl = "www.example.com",
-                            LocImageUrl = "../img/resim.jpg",
+                            LocImageUrl = "../img/gs.jpg",
                             Venue = "Rams Park Arena"
                         },
                         new
                         {
                             Id = 4,
                             EventUrl = "www.example.com",
-                            LocImageUrl = "../img/resim.jpg",
-                            Venue = "PAribu Istinye Park"
+                            LocImageUrl = "/img/resim.jpg",
+                            Venue = "Paribu Istinye Park"
                         },
                         new
                         {
                             Id = 5,
                             EventUrl = "www.example.com",
-                            LocImageUrl = "../img/resim.jpg",
+                            LocImageUrl = "/img/resim.jpg",
                             Venue = "Istanbul Workshop"
                         },
                         new

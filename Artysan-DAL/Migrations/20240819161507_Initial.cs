@@ -34,8 +34,8 @@ namespace Artysan_DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -335,8 +335,8 @@ namespace Artysan_DAL.Migrations
                 {
                     { 1, "../img/resim.com", "www.example.com", "Hande Yener" },
                     { 2, "../img/resim.com", "www.example.com", null },
-                    { 3, "../img/resim.com", "www.example.com", null },
-                    { 4, "../img/resim.com", "www.example.com", null },
+                    { 3, "/img/resim.com", "www.example.com", null },
+                    { 4, "/img/resim.com", "www.example.com", null },
                     { 5, "../img/resim.com", "www.example.com", null },
                     { 6, "../img/artists/sezen-aksu.jpg", "www.example.com/sezen-aksu", "Sezen Aksu" },
                     { 7, "../img/theatre/hamlet.jpg", "www.example.com/devlet-tiyatrolari", null },
@@ -367,11 +367,11 @@ namespace Artysan_DAL.Migrations
                 columns: new[] { "Id", "EventUrl", "LocImageUrl", "Venue" },
                 values: new object[,]
                 {
-                    { 1, "www.example.com", "../img/resim.jpg", "Ankara Oran Açıkhava Sahnesi" },
+                    { 1, "www.example.com", "/img/hande.jpeg", "Ankara Oran Açıkhava Sahnesi" },
                     { 2, "www.example.com", "../img/resim.jpg", "Antalya Alanya Açıkhava Tiyatrosu" },
-                    { 3, "www.example.com", "../img/resim.jpg", "Rams Park Arena" },
-                    { 4, "www.example.com", "../img/resim.jpg", "PAribu Istinye Park" },
-                    { 5, "www.example.com", "../img/resim.jpg", "Istanbul Workshop" },
+                    { 3, "www.example.com", "../img/gs.jpg", "Rams Park Arena" },
+                    { 4, "www.example.com", "/img/resim.jpg", "Paribu Istinye Park" },
+                    { 5, "www.example.com", "/img/resim.jpg", "Istanbul Workshop" },
                     { 6, "www.example.com/sezen-aksu-izmir", "../img/izmir-kulturpark.jpg", "İzmir Kültürpark Açıkhava Tiyatrosu" },
                     { 7, "www.example.com/hamlet-ankara", "../img/ankara-devlet-tiyatrosu.jpg", "Ankara Devlet Tiyatrosu" },
                     { 8, "www.example.com/fenerbahce-efes", "../img/ulker-sports-arena.jpg", "Ülker Sports Arena" },
@@ -401,16 +401,16 @@ namespace Artysan_DAL.Migrations
                 columns: new[] { "Id", "CategoryId", "EventDate", "ImageUrl", "LocationId", "Name", "Stock", "TicketId" },
                 values: new object[,]
                 {
-                    { 1, 1, "21.08.2024", "../img/Concert/resim.jpg", 1, "POP Gecesi Festivali", 500, null },
-                    { 2, 2, "21.09.2024", "../img/Theatre/resim.jpg", 2, "Lüküs Hayat", 500, null },
-                    { 3, 3, "21.08.2024", "../img/Sport/resim.jpg", 3, "Galatasaray-Konyaspor", 500, null },
-                    { 4, 4, "10.09.2024", "../img/Cinema/resim.jpg", 4, "Dune Çöl Gezegeni", 500, null },
-                    { 5, 5, "21.08.2024", "../img/Workshop/resim.jpg", 5, "Gandalf Heykel Workshop", 500, null },
-                    { 6, 1, "15.12.2024", "../img/Concert/sezen-aksu-concert.jpg", 6, "Sezen Aksu Yılbaşı Özel Konseri", 400, null },
-                    { 7, 2, "05.01.2025", "../img/Theatre/hamlet-poster.jpg", 7, "Hamlet", 300, null },
-                    { 8, 3, "22.02.2025", "../img/Sport/fenerbahce-efes.jpg", 8, "Fenerbahçe Beko - Anadolu Efes", 1000, null },
-                    { 9, 4, "10.03.2025", "../img/Cinema/avatar3-poster.jpg", 9, "Avatar 3 Galası", 200, null },
-                    { 10, 5, "18.04.2025", "../img/Workshop/photoshop-masterclass.jpg", 10, "Adobe Photoshop Masterclass", 50, null }
+                    { 1, 1, "21.08.2024", "/img/Concert/resim.jpg", 1, "POP Gecesi Festivali", 500, null },
+                    { 2, 2, "21.09.2024", "/img/Theatre/lukus.jpg", 2, "Lüküs Hayat", 500, null },
+                    { 3, 3, "21.08.2024", "/img/Sport/gs.jpg", 3, "Galatasaray-Konyaspor", 500, null },
+                    { 4, 4, "10.09.2024", "../img/Cinema/dune.jpg", 4, "Dune Çöl Gezegeni", 500, null },
+                    { 5, 5, "21.08.2024", "/img/Workshop/gandalf.jpg", 5, "Gandalf Heykel Workshop", 500, null },
+                    { 6, 1, "15.12.2024", "/img/Concert/sezen.jpg", 6, "Sezen Aksu Yılbaşı Özel Konseri", 400, null },
+                    { 7, 2, "05.01.2025", "/img/Theatre/hamlet.jpg", 7, "Hamlet", 300, null },
+                    { 8, 3, "22.02.2025", "/img/Sport/efes.jpg", 8, "Fenerbahçe Beko - Anadolu Efes", 1000, null },
+                    { 9, 4, "10.03.2025", "/img/Cinema/avatar.jpg", 9, "Avatar 3 Galası", 200, null },
+                    { 10, 5, "18.04.2025", "/img/Workshop/psdw.jpg", 10, "Adobe Photoshop Masterclass", 50, null }
                 });
 
             migrationBuilder.InsertData(

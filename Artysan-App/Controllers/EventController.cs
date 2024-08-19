@@ -31,7 +31,7 @@ namespace Artysan_App.Controllers
         }
         public async Task<IActionResult> Sport(int? id)
         {
-            var cat = await _eventService.GetSportEvents(1);
+            var cat = await _eventService.GetSportEvents(3);
              return View(cat);
             /*
             var cat = await _eventService.GetAll();
