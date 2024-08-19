@@ -3,6 +3,7 @@ using Artysan_Entities.Interfaces;
 using Artysan_Entities.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Artysan_Service.Services
 {
- public class AccountService : ICustomerService
+	public class AccountService : IAccountService
 	{
 		private readonly UserManager<AppUser> _userManager;
 		private readonly RoleManager<AppRole> _roleManager;
@@ -65,7 +66,7 @@ namespace Artysan_Service.Services
 				message = "Kullanıcı bulunamadı!";
 				return message;
 			}
-			var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);  
+			var signInResult = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
 
 			if (signInResult.Succeeded)
 			{
@@ -73,23 +74,84 @@ namespace Artysan_Service.Services
 			}
 			return message;
 		}
-        public async Task SignOutAsync()
-        {
+		public async Task SignOutAsync()
+		{
 			await _signInManager.SignOutAsync();
-        }
-        public Task<string> CreateRoleAsync(RoleViewModel model)
+		}
+		public Task<string> CreateRoleAsync(RoleViewModel model)
 		{
 			throw new NotImplementedException();
 		}
 
-		public Task<List<RoleViewModel>> GetAllRoles()
+		public async Task<List<RoleViewModel>> GetAllRoles()
 		{
-			throw new NotImplementedException();
+			var roles = await _roleManager.Roles.ToListAsync();
+			return _mapper.Map<List<RoleViewModel>>(roles);
 		}
 
 		public Task<List<UserViewModel>> GetAllUsers()
 		{
 			throw new NotImplementedException();
+		}
+		public async Task<UsersInOrOutRoleViewModel> GetAllUsersInOrOutRole(string id)
+		{
+			var role = await _roleManager.FindByIdAsync(id);
+
+			var usersInRole = new List<AppUser>();
+			var usersOutRole = new List<AppUser>();
+
+			var users = await _userManager.Users.ToListAsync();
+
+			foreach (var user in users)
+			{
+				if (await _userManager.IsInRoleAsync(user, role.Name))
+				{
+					usersInRole.Add(user); //Rolde bulunan kulanıcılara ekle.
+				}
+				else
+				{
+					usersOutRole.Add(user); //Rolde olmayan kulanıcılara ekle.
+				}
+			}
+			UsersInOrOutRoleViewModel model = new UsersInOrOutRoleViewModel()
+			{
+				Role = _mapper.Map<RoleViewModel>(role),
+				UsersInRole = _mapper.Map<List<UserViewModel>>(usersInRole),
+				UsersOutRole = _mapper.Map<List<UserViewModel>>(usersOutRole),
+			};
+			return model;
+		}
+		public async Task<string> EditRoleListAsync(EditRoleViewModel model)
+		{
+			string message = "OK";
+
+			foreach (var userId in model.UsersIdsToAdd ?? new string[] { })
+			{
+				var user = await _userManager.FindByIdAsync(userId);
+				if (user != null)
+				{
+					var result = await _userManager.AddToRoleAsync(user, model.RoleName);
+					if (!result.Succeeded)
+						message += $"{user.UserName} role eklenemedi.";
+				}
+			}
+
+			foreach (var userId in model.UsersIdsToDelete ?? new string[] { })
+			{
+				var user = await _userManager.FindByIdAsync(userId);
+				if (user != null)
+				{
+					var result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+					if (!result.Succeeded)
+						message += $"{user.UserName} rolden çıkarılamadı.";
+				}
+			}
+			return message;
+		}
+		public async Task DeleteRoleAsync(string id)
+		{
+			var role = await _roleManager.FindByIdAsync(id);
+			await _roleManager.DeleteAsync(role);
 		}
 	}
 }

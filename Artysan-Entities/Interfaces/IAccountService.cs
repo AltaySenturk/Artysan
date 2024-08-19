@@ -15,8 +15,8 @@ namespace Artysan_Entities.Interfaces
         Task<string> CreateRoleAsync(RoleViewModel model);
         Task<List<UserViewModel>> GetAllUsers();
         Task<List<RoleViewModel>> GetAllRoles();
-        //Task<UsersInOrOutRoleViewModel> GetAllUsersInOrOutRole(string id);
-        //Task<string> EditRoleListAsync(EditRoleViewModel model);
+        Task<UsersInOrOutRoleViewModel> GetAllUsersInOrOutRole(string id);
+        Task<string> EditRoleListAsync(EditRoleViewModel model);
         Task DeleteRoleAsync(string id);
 
         Task SignOutAsync();

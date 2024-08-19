@@ -36,7 +36,7 @@ namespace Artysan_Service.Extensions
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(ICustomerService), typeof(AccountService));
+            services.AddScoped(typeof(IAccountService), typeof(AccountService));
 
 
             services.AddAutoMapper(typeof(MappingProfile));

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Artysan_Entities.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Artysan_App.Areas.Admin.Controllers
@@ -7,10 +8,17 @@ namespace Artysan_App.Areas.Admin.Controllers
     [Authorize]
     public class RoleController : Controller
     {
+        private readonly IAccountService _accountService;
 
-        public IActionResult Index()
+        public RoleController(IAccountService accountService)
         {
-            return View();
+            _accountService = accountService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var roles = await _accountService.GetAllRoles();
+            return View(roles);
         }
     }
 }

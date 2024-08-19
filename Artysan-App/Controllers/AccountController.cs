@@ -6,9 +6,9 @@ namespace Artysan_App.Controllers
 {
     public class AccountController : Controller
     {
-       private readonly ICustomerService _accountService;
+       private readonly IAccountService _accountService;
 
-		public AccountController(ICustomerService accountService)
+		public AccountController(IAccountService accountService)
 		{
 			_accountService = accountService;
 		}

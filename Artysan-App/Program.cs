@@ -17,18 +17,18 @@ var app = builder.Build();
 //#region AutoMigration
 //using (var scope = app.Services.CreateScope())
 //{
-//  using (var appContext = scope.ServiceProvider.GetRequiredService<ArtysanDbContext>())
-// {
-//      try
-//     {
-//           appContext.Database.Migrate();
-//       }
-//      catch (Exception ex)
-//     {
-//         // Log errors or do anything you think it's needed
-//          throw;
-//      }
-//   }
+//    using (var appContext = scope.ServiceProvider.GetRequiredService<ArtysanDbContext>())
+//    {
+//        try
+//        {
+//            appContext.Database.Migrate();
+//        }
+//        catch (Exception ex)
+//        {
+//            // Log errors or do anything you think it's needed
+//            throw;
+//        }
+//    }
 //}
 //#endregion
 
