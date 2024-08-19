@@ -69,7 +69,7 @@ namespace Artysan_Service.Services
             return eventViewModels;
         }
 
-        public async Task<IEnumerable<EventViewModel>> GetTheatreEvents(int Id)
+        public async Task<IEnumerable<EventViewModel>> GetTheaterEvents(int Id)
         {
            var events = await _uow.GetRepository<Event>().GetAll();
             var locations = await _uow.GetRepository<Location>().GetAll();

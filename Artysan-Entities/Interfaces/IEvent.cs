@@ -12,7 +12,7 @@ namespace Artysan_Entities.Interfaces
 	{
 		Task<IEnumerable<EventViewModel>> GetAll();
 		Task<IEnumerable<EventViewModel>> GetSportEvents(int Id);
-		Task<IEnumerable<EventViewModel>> GetTheatreEvents(int Id);
+		Task<IEnumerable<EventViewModel>> GetTheaterEvents(int Id);
 		Task<IEnumerable<EventViewModel>> GetCinemaEvents(int Id);
 		Task<IEnumerable<EventViewModel>> GetConcertEvents(int Id);
 		Task<IEnumerable<EventViewModel>> GetWorkshopEvents(int Id);

@@ -45,5 +45,50 @@ namespace Artysan_App.Controllers
                 cat = cat.Where(c => c.CategoryId == id).ToList();
             } */
             }
+        public async Task<IActionResult> Theater(int? id)
+        {
+            var cat = await _eventService.GetTheaterEvents(2);
+            return View(cat);
+            /*
+            var cat = await _eventService.GetAll();
+            if (id != null)
+            {
+                cat = cat.Where(c => c.CategoryId == id).ToList();
+            } */
+        }
+        public async Task<IActionResult> Cinema(int? id)
+        {
+            var cat = await _eventService.GetCinemaEvents(4);
+            return View(cat);
+            /*
+            var cat = await _eventService.GetAll();
+            if (id != null)
+            {
+                cat = cat.Where(c => c.CategoryId == id).ToList();
+            } */
+        }
+        public async Task<IActionResult> Concert(int? id)
+        {
+            var cat = await _eventService.GetConcertEvents(1);
+            return View(cat);
+            /*
+            var cat = await _eventService.GetAll();
+            if (id != null)
+            {
+                cat = cat.Where(c => c.CategoryId == id).ToList();
+            } */
+        }
+        public async Task<IActionResult> Workshop(int? id)
+        {
+            var cat = await _eventService.GetWorkshopEvents(5);
+            return View(cat);
+            /*
+            var cat = await _eventService.GetAll();
+            if (id != null)
+            {
+                cat = cat.Where(c => c.CategoryId == id).ToList();
+            } */
+        }
+        
     }
 }
