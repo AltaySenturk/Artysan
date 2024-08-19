@@ -1,0 +1,35 @@
+@model List<EventViewModel>
+
+@{
+    Layout = "_Layoutfake";
+}
+
+<table class="table">
+    <tr style="background-color: lightgray;"> 
+        <th  scope="col"></th>
+        <th scope="col">Etkinlik Adı</th>
+        <th scope="col">Etkinlik Tarihi</th>
+        <th scope="col">Etkinlik Yeri</th>
+    </tr>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr> 
+               
+                <td><a href="/Movie/Details/@item.Id"> <img style="max-height: 120px; align-items: center;" src="@Html.DisplayFor(modelItem => item.ImageUrl) "></a></td>
+                <td style="align-content: center;">@Html.DisplayFor(modelItem => item.Name)</td>
+                <td style="align-content: center;">@Html.DisplayFor(modelItem => item.EventDate)</td>
+                <td style="align-content: center;">@Html.DisplayFor(modelItem => item.Location.Venue)</td>
+                
+
+
+            </tr>
+        }
+
+
+
+    </tbody>
+
+
+</table>
