@@ -20,6 +20,7 @@ namespace Artysan_Entities.ViewModels
 		public int? LocationId { get; set; }
 		public TicketViewModel Ticket { get; set; }
 		public LocationViewModel Location { get; set; }
-		
+		public CategoryViewModel Category { get; set; }
+
 	}
 }

@@ -1,0 +1,12 @@
+@model List<LocationViewModel>
+
+<option selected>Lokasyon seçiniz...</option>
+@foreach (var item in Model)
+{
+  <option value="@item.Id "> <a asp-action="Index" asp-controller="Event"
+        asp-route-id="@item.Id">@item.Venue</a>
+</option>
+
+}
+</select>
+</div>

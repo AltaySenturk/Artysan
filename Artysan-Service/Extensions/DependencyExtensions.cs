@@ -35,6 +35,7 @@ namespace Artysan_Service.Extensions
 
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAccountService), typeof(AccountService));
 

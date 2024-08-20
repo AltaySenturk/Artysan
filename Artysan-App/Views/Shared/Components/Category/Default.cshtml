@@ -1,12 +1,15 @@
 ﻿@model List<CategoryViewModel>
 
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-	<a class="dropdown-item" href="~/Article/Index">Tüm Blog Yazıları</a>
-	<div class="dropdown-divider"></div>
-	@foreach (var item in Model)
+<option selected style="width:10px;">Kategori seçiniz...</option>
+@foreach (var item in Model)
+{
+	@if (item.Id <= 5)
 	{
-		<a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-route-id="@item.Id">@item.CatName</a>
-		<div class="dropdown-divider"></div>
+     
+		<option value="@item.Id" style="width:10px;"> <a asp-action="Index" asp-controller="Event"
+		asp-route-id="@item.Id">@item.CatName</a>
+</option>
 	}
+}
+</select>
 </div>

@@ -25,26 +25,50 @@ namespace Artysan_App.Controllers
 
         }
 
-        public async Task<IActionResult> Index(string? search)
+        public async Task<IActionResult> Index(string? search, int? category, int? location, string? date)
         {
             var list = await _eventService.GetAll();
             if (search != null)
-			{
-				list = list.Where(a => a.Name.ToLower().Contains(search.ToLower())).ToList();
-			}
-            return View(list);
+            {
+                list = list.Where(a => a.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+            if (category != null)
+            {
+                list = list.Where(a => a.CategoryId.HasValue && a.CategoryId.Value == category).ToList();
+            }
+
+            if (location != null)
+            {
+                list = list.Where(a => a.LocationId.HasValue && a.LocationId.Value == location).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(date))
+            {
+                if (DateTime.TryParse(date, out DateTime parsedDate))
+                {
+                    list = list.Where(a => DateTime.TryParse(a.EventDate, out DateTime eventDate) && eventDate.Date == parsedDate.Date).ToList();
+                }
+                else
+                {
+                    // Handle invalid date input
+                }
+            }
+
+            return PartialView("_Eventlist", list);
         }
+
+
         public async Task<IActionResult> Sport(int? id)
         {
             var cat = await _eventService.GetSportEvents(3);
-             return View(cat);
+            return View(cat);
             /*
             var cat = await _eventService.GetAll();
             if (id != null)
             {
                 cat = cat.Where(c => c.CategoryId == id).ToList();
             } */
-            }
+        }
         public async Task<IActionResult> Theater(int? id)
         {
             var cat = await _eventService.GetTheaterEvents(2);
@@ -89,6 +113,6 @@ namespace Artysan_App.Controllers
                 cat = cat.Where(c => c.CategoryId == id).ToList();
             } */
         }
-        
+
     }
 }
