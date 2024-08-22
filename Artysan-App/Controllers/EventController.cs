@@ -113,6 +113,11 @@ namespace Artysan_App.Controllers
                 cat = cat.Where(c => c.CategoryId == id).ToList();
             } */
         }
-
+        public IActionResult Details(int id)    //id -> movie.Id
+        {
+            
+            var detay = _eventService.Get(id);
+            return View(detay);
+        }
     }
 }
