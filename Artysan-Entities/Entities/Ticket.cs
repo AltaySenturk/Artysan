@@ -8,10 +8,11 @@ namespace Artysan_Entities.Entites
 {
     public class Ticket
     {
+        [Key]
         public int Id { get; set; }
 
         public string? TicketName { get; set; }
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
    
 
         public List<Event> Events { get; set; }

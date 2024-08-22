@@ -36,11 +36,14 @@ namespace Artysan_Service.Extensions
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAccountService), typeof(AccountService));
 
 
             services.AddAutoMapper(typeof(MappingProfile));
+   
         }
 
     }

@@ -25,6 +25,7 @@
 <body>
 
 
+
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -34,9 +35,17 @@
             <li><a href="#"><span class="icon_heart_alt"></span>
                     <div class="tip">2</div>
                 </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                    <div class="tip">2</div>
-                </a></li>
+           <li><a><span class="icon_bag_alt cart-button" id="cartButton"></span>
+                                    <div class=" tip">
+                                    </div>
+                                </a></li>
+                        </ul>
+                        <div class="overlay" id="overlay"></div>
+                        <div class="cart-menu" id="cartMenu">
+                            <h2>Your Cart</h2>
+                            <button class="close-button" id="closeButton">Close</button>
+
+                        </div>
         </ul>
         <div class="offcanvas__logo">
             <a href="./index.cshtml"><img src="~/img/logo-black.png" alt=""></a>
@@ -233,13 +242,14 @@
                         <div class="overlay" id="overlay"></div>
                         <div class="cart-menu" id="cartMenu">
                             <h2>Your Cart</h2>
-                            <p>Item 1</p>
-                            <p>Item 2</p>
+                            <button class="close-button" id="closeButton">Close</button>
+
                         </div>
                         <script>
                             const cartButton = document.getElementById('cartButton');
                             const cartMenu = document.getElementById('cartMenu');
                             const overlay = document.getElementById('overlay');
+                            const closeButton = document.getElementById('closeButton');
 
                             cartButton.addEventListener('click', () => {
                                 cartMenu.classList.add('active');
@@ -247,6 +257,10 @@
                             });
 
                             overlay.addEventListener('click', () => {
+                                cartMenu.classList.remove('active');
+                                overlay.classList.remove('active');
+                            });
+                            closeButton.addEventListener('click', () => {
                                 cartMenu.classList.remove('active');
                                 overlay.classList.remove('active');
                             });

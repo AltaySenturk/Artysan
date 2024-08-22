@@ -36,7 +36,7 @@ namespace Artysan_Service.Services
 
         public async Task<EventViewModel> Get(int id)
         {
-              var eventt = await _uow.GetRepository<Event >().GetByIdAsync(id);
+              var eventt = await _uow.GetRepository<Event>().GetByIdAsync(id);
             return _mapper.Map<EventViewModel>(eventt);;
         }
 

@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ArtysanDbContext>(
         options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"))
     );
 builder.Services.AddExtensions();
+builder.Services.AddSession();
 var app = builder.Build();
 
 //#region AutoMigration
@@ -46,6 +47,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
+
 
 app.MapControllerRoute(
     name: "default",

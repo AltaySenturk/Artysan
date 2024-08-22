@@ -22,7 +22,7 @@ namespace Artysan_Entities.Entites
         public int? LocationId { get; set; }
         public virtual Location Location { get; set; }
         
-   
+        public Ticket Ticket { get; set; }
         public virtual IEnumerable<EventSale> EventSales { get; set; }
     }
 }

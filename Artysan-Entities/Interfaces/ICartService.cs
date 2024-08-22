@@ -9,14 +9,13 @@ namespace Artysan_Entities.Interfaces
 {
     public interface ICartService
     {
-        Task<List<CartViewModel>> AddToCart(List<CartViewModel> cart, CartViewModel cartItem);
-
-        public List<CartViewModel> DeleteFromCart(List<CartViewModel> cart, int id);
-
-        public int TotalQuantity(List<CartViewModel> cart);
-
-        public decimal TotalPrice(List<CartViewModel> cart);
-
-
+        Task<List<CartViewModel>>AddToCart(List<CartViewModel> cart, CartViewModel cartItem);
+         Task<List<CartViewModel>> GetTicket(decimal Id);
+        List<CartViewModel> DeleteFromCart(List<CartViewModel> cart, int id);
+        int TotalQuantity(List<CartViewModel> cart);
+        decimal TotalPrice(List<CartViewModel> cart);
     }
+
+
+
 }

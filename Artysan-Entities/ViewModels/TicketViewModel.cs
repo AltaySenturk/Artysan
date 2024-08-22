@@ -11,7 +11,7 @@ namespace Artysan_Entities.ViewModels
 	{
 		public int Id { get; set; }
 		public string? TicketName { get; set; }
-		public decimal? Price { get; set; }
+		public decimal Price { get; set; }
 
 	}
 }

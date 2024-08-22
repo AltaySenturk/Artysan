@@ -8,14 +8,18 @@
     <div class="row" style="padding: 2%;">
         @foreach (var item in Model)
         {
+            <form asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id"asp-route-quantity="1"asp-route-ticket="@item.TicketId"  method="get">
             <div class="col-lg-3 col-md-4 col-sm-6 mix" >
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@item.ImageUrl"style="max-height: 200px;">
                         <ul class="product__hover">
                             <li><a href="@item.ImageUrl" class="image-popup"><span class="arrow_expand"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <input type="hidden" name="id" value="@item.Id" />
+                             <input name="quantity" class="text-center" type="number" value="1" min="1" max="@item.Stock" />
+                            <li><button type="submit" class="icon_bag_alt"></button></li>
                         </ul> 
                     </div>
+
                     <div class="product__item__text">
                         <h6><a href="#">@item.Name</a></h6>
                         <div class="rating">
@@ -27,11 +31,15 @@
                         </div>
 
                     </div>
+                 
                 </div>
             </div>
+   </form>
         }
+  
     </div>
 }
+
 else
 {
     <p>No events found matching your criteria.</p>
