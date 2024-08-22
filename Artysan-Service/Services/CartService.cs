@@ -15,7 +15,7 @@ namespace Artysan_Service.Services
 {
     public class CartService : ICartService
     {
-         private readonly IUnitOfWork _uow;
+        private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
 
         public CartService(IUnitOfWork uow, IMapper mapper)
@@ -25,7 +25,7 @@ namespace Artysan_Service.Services
         }
         public async Task<List<CartViewModel>> AddToCart(List<CartViewModel> cart, CartViewModel cartItem)
         {
-  
+
             var item = cart.Find(c => c.EventId == cartItem.EventId);
             if (item != null)
             {
@@ -37,9 +37,18 @@ namespace Artysan_Service.Services
             }
             return cart;
         }
-        public async Task<List<CartViewModel>> GetTicket(Decimal Id){
-             var Ticket = await _uow.GetRepository<Ticket>().GetAll();
-               List<CartViewModel> cart = new List<CartViewModel>();
+        public async Task<TicketViewModel> GetTicket(int Id)
+        {
+            // Fetch all tickets asynchronously
+            var tickets = await _uow.GetRepository<Ticket>().GetByIdAsync(Id);
+  
+             return _mapper.Map<TicketViewModel>(tickets);
+
+            
+       
+            /*
+            var Ticket = await _uow.GetRepository<Ticket>().GetAll();
+            List<CartViewModel> cart = new List<CartViewModel>();
             cart = cart.Where(e => e.Ticket.Id == Id).ToList();
             var eventViewModels = _mapper.Map<List<CartViewModel>>(cart);
 
@@ -48,7 +57,7 @@ namespace Artysan_Service.Services
                 eventViewModel.Ticket = _mapper.Map<TicketViewModel>(
                  Ticket.FirstOrDefault(l => l.Id == eventViewModel.TicketId));
             }
-            return eventViewModels;
+            return eventViewModels;*/
         }
         public List<CartViewModel> DeleteFromCart(List<CartViewModel> cart, int id)
         {

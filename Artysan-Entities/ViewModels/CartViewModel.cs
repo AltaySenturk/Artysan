@@ -12,7 +12,7 @@ namespace Artysan_Entities.ViewModels
         public int EventId { get; set; }
         public string EventName { get; set; }
         public int EventQuantity { get; set; }
-        public decimal EventPrice { get; set; }
+        public int EventPrice { get; set; }
         public int Price { get; set; }
         public string EventDate { get; set; }
         public Event Event{ get; set; }

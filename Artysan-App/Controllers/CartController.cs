@@ -25,9 +25,9 @@ namespace Artysan_App.Controllers
         {
             cart = GetCart();
             // Retrieve the cart from the session or some other storage
-            TempData["ToplamAdet"] = _cartService.TotalQuantity(cart);
+            TempData["ToplamAdet"] = _cartService.TotalQuantity(cart).ToString();
             if (_cartService.TotalPrice(cart) > 0)
-                TempData["ToplamTutar"] = _cartService.TotalPrice(cart);
+                TempData["ToplamTutar"] = _cartService.TotalPrice(cart).ToString();
             return View(cart);
         }
 
@@ -46,6 +46,7 @@ namespace Artysan_App.Controllers
                 }
 
                 // Try to retrieve the event by id
+                var ticket = await _cartService.GetTicket(id);
                 var evently = await _eventService.Get(id);
                 if (evently == null)
                 {
@@ -76,7 +77,7 @@ namespace Artysan_App.Controllers
                     EventId = evently.Id,
                     EventName = evently.Name,
                     EventQuantity = quantity,
-                    EventPrice = evently.Ticket.Price
+                    EventPrice = (int)ticket.Price,
 
                 };
 
