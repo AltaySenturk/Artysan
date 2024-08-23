@@ -41,11 +41,11 @@ namespace Artysan_Service.Services
         {
             // Fetch all tickets asynchronously
             var tickets = await _uow.GetRepository<Ticket>().GetByIdAsync(Id);
-  
-             return _mapper.Map<TicketViewModel>(tickets);
 
-            
-       
+            return _mapper.Map<TicketViewModel>(tickets);
+
+
+
             /*
             var Ticket = await _uow.GetRepository<Ticket>().GetAll();
             List<CartViewModel> cart = new List<CartViewModel>();
@@ -67,12 +67,25 @@ namespace Artysan_Service.Services
 
         public int TotalQuantity(List<CartViewModel> cart)
         {
+            if (cart == null || !cart.Any())
+            {
+                return 0;
+            }
+
             int total = cart.Sum(c => c.EventQuantity);
             return total;
+            /*
+            int total = cart.Sum(c => c.EventQuantity);
+            return total;*/
         }
 
         public decimal TotalPrice(List<CartViewModel> cart)
         {
+            if (cart == null || !cart.Any())
+            {
+                return 0;
+            }
+
             decimal total = cart.Sum(c => c.EventQuantity * c.EventPrice);
             return total;
         }

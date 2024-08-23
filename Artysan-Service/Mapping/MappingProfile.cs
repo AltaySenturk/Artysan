@@ -22,7 +22,12 @@ namespace Artysan_Service.Mapping
             CreateMap<Cart, CartViewModel>().ReverseMap();
             CreateMap<Ticket, TicketViewModel>().ReverseMap();
             CreateMap<AppUser, UserViewModel>().ReverseMap();
+            CreateMap<AppUser, LoginViewModel>().ReverseMap();
             CreateMap<EventArtist, EventArtistViewModel>().ReverseMap();
+            CreateMap<EventSale, EventSaleViewModel>().ReverseMap();
+            CreateMap<EventSaleDetail, EventSaleDetailViewModel>().ReverseMap();
+            CreateMap<Task<IEnumerable<UserViewModel>>, List<LoginViewModel>>();
+            CreateMap<Task<IEnumerable<UserViewModel>>, List<LoginViewModel>>();
             CreateMap<AppRole, RoleViewModel>().ReverseMap();
 
         }

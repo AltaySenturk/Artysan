@@ -14,8 +14,10 @@ namespace Artysan_Entities.Interfaces
         Task<UserViewModel> Find(string username);
         Task<string> CreateRoleAsync(RoleViewModel model);
         Task<List<UserViewModel>> GetAllUsers();
+         Task<UserViewModel> GetAll();
         Task<List<RoleViewModel>> GetAllRoles();
 
         Task SignOutAsync();
     }
+    
 }
