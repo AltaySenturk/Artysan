@@ -1,0 +1,10 @@
+@{
+    Layout="_Layoutfake";
+}
+
+<h2> Operation Result</h2>
+
+@if(TempData["Message"] != null )
+{
+  <div class="alert alert-sucess mt-10"> @TempData["message"]</div>
+}

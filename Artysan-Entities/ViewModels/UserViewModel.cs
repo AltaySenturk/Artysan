@@ -12,16 +12,16 @@ namespace Artysan_Entities.ViewModels
 	{
 		public int Id { get; set; }
 		[Required(ErrorMessage = "İsim alanı boş geçilemez!")]
-		public string FirstName { get; set; }
+		public string? FirstName { get; set; }
 		[Required(ErrorMessage = "Soyisim alanı boş geçilemez!")]
-		public string LastName { get; set; }
+		public string? LastName { get; set; }
 		[Required(ErrorMessage = "Kullanıcı Adı boş geçilemez!")]
 		[Display(Name = "Kullanıcı Adı")]
-		public string UserName { get; set; }
-		[Required(ErrorMessage = "Telefon numarası boş geçilemez!")]
-		public string PhoneNumber { get; set; }
+		public string? UserName { get; set; }
+		[Required(ErrorMessage = "Telefon numarası boş geçilemez!")] 
+		public string? PhoneNumber { get; set; }
 		[Required(ErrorMessage = "Email adresi boş geçilemez!")]
 		[EmailAddress(ErrorMessage = "Email formatına uygun değil!")]
-		public string Email { get; set; }
+		public string? Email { get; set; }
 	}
 }

@@ -1,0 +1,116 @@
+@model CustomerReceiptViewModel
+@{
+    ViewData["Title"] = "ConfirmPayment";
+    Layout = "~/Views/Shared/_Layoutfake.cshtml";
+}
+
+<h3>Ödeme Onay Sayfası</h3>
+
+<div class="container">
+    <form asp-action="ConfirmPayment" asp-controller="Shopping" method="post">
+        @if (Model != null && Model.userViewModel != null && Model.eventSaleViewModel != null)
+        {
+            <input type="hidden" asp-for="@Model.userViewModel.Id" />
+            <input type="hidden" asp-for="@Model.eventSaleViewModel.CustomerId" />
+            <input type="hidden" asp-for="@Model.eventSaleViewModel.Date" />
+            <input type="hidden" asp-for="@Model.eventSaleViewModel.TotalQuantity" />
+            <input type="hidden" asp-for="@Model.eventSaleViewModel.TotalPrice" />
+            
+            <div class="row">
+                <div class="col-md-6"><h4>Müşteri Bilgileri</h4></div>
+                <div class="col-md-6"><h4>Sipariş Bilgileri</h4></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.userViewModel.FirstName" class="control-label"></label>
+                        <input asp-for="@Model.userViewModel.FirstName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.userViewModel.Email" class="control-label"></label>
+                        <input asp-for="@Model.userViewModel.Email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.userViewModel.PhoneNumber" class="control-label"></label>
+                        <input asp-for="@Model.userViewModel.PhoneNumber" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.userViewModel.LastName" class="control-label"></label>
+                        <input asp-for="@Model.userViewModel.LastName" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-primary table-striped">
+                        <thead>
+                            <tr>
+                                <th>Film Adı</th>
+                                <th>Birim Fiyat</th>
+                                <th>Adet</th>
+                                <th>Tutar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.cartViews != null && Model.cartViews.Any())
+                            {
+                                @foreach (var item in Model.cartViews)
+                                {
+                                    <tr>
+                                        <td>@item.EventName</td>
+                                        <td>@item.EventPrice.ToString("C")</td>
+                                        <td>@item.EventQuantity</td>
+                                        <td>@((item.EventPrice * item.EventQuantity).ToString("C"))</td>
+                                    </tr>
+                                }
+                                <tr class="fw-bold">
+                                    <td>Toplam</td>
+                                    <td></td>
+                                    <td>@Model.eventSaleViewModel.TotalQuantity</td>
+                                    <td>@Model.eventSaleViewModel.TotalPrice.ToString("C")</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4">Sepetiniz boş.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <h4>Ödeme Bilgileri</h4>
+                <div class="col-md-6">
+                    <label for="kkarti" class="control-label"><h5>Kredi Kartı Bilgileri</h5></label><br />
+                    <label for="kartisim" class="control-label">Kartın Üstündeki İsim</label>
+                    <input asp-for="@Model.userViewModel.FirstName" class="form-control" />
+                    <label for="kartno" class="control-label">Kredi Kartı Numarası</label>
+                    <input id="kartno" name="kartno" class="form-control" type="text" placeholder="1111-2222-3333-4444" required />
+                    <div class="row">
+                        <div class="col">
+                            <label for="expmonth" class="control-label">Ay</label>
+                            <input id="expmonth" name="expmonth" class="form-control" type="number" min="1" max="12" value="11" required />
+                        </div>
+                        <div class="col">
+                            <label for="expyear" class="control-label">Yıl</label>
+                            <input id="expyear" name="expyear" class="form-control" type="number" min="2024" max="2034" value="2025" required />
+                        </div>
+                        <div class="col">
+                            <label for="cvv" class="control-label">CVV</label>
+                            <input id="cvv" name="cvv" class="form-control" type="number" min="100" max="999" value="222" required />
+                        </div>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" class="btn btn-primary" value="Satın Al" />
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                Üzgünüz, ödeme bilgilerini yüklerken bir hata oluştu. Lütfen tekrar deneyin.
+            </div>
+        }
+    </form>
+</div>

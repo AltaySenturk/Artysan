@@ -11,8 +11,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ArtysanDbContext>(
         options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"))
     );
+    builder.Services.AddSession();
 builder.Services.AddExtensions();
-builder.Services.AddSession();
+
+
 var app = builder.Build();
 
 //#region AutoMigration

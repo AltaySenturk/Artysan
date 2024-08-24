@@ -1,12 +1,13 @@
 ﻿using Artysan_Entities.Interfaces;
 using Artysan_Entities.ViewModels;
+using Artysan_Service.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Artysan_App.Controllers
 {
-    public class AccountController : Controller
-    {
-       private readonly IAccountService _accountService;
+	public class AccountController : Controller
+	{
+		private readonly IAccountService _accountService;
 
 		public AccountController(IAccountService accountService)
 		{
@@ -23,26 +24,51 @@ namespace Artysan_App.Controllers
 			{
 				ReturnUrl = ReturnUrl
 			};
-			return View(model);	
+			return View(model);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Login(LoginViewModel model)
 		{
+			var result = await _accountService.FindByNameAsync(model);
+			if (result.Status == "Kullanıcı bulunamadı!")
+			{
+				ModelState.AddModelError("", result.Status);
+				return View(model);
+			}
+			else if (result.Status == "OK")
+			{
+				// Assuming _accountService.FindByNameAsync now returns user data
+				var userViewModel = result.User; // This should be a UserViewModel object
+				HttpContext.Session.SetJson("user", userViewModel);
+				return RedirectToAction("ConfirmAddress", "Shopping");
+			}
+
+			// Handle other cases
+			return View(model);
+
+
+			/*
 			string msg = await _accountService.FindByNameAsync(model);
-			if(msg == "Kullanıcı bulunamadı!")
+			 var result = await _accountService.FindByNameAsync(model);
+			if (msg == "Kullanıcı bulunamadı!")
 			{
 				ModelState.AddModelError("", msg);
 				return View(model);
 			}
-			else if(msg == "OK")
+			else if (msg == "OK")
 			{
-                return Redirect(model.ReturnUrl ?? "/Home/Index");
+					HttpContext.Session.SetJson("user", msg);  //login olan customer bilgilerini session'a kayıt ediyoruz.
+				return RedirectToAction("ConfirmAddress","Shopping");
+				//return Redirect(model.ReturnUrl ?? "/Home/Index");
 			}
+ 
 			else
 			{
-                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
-            }
-			return View(model);
+				
+				 ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!"); 
+			}
+			return View(model);*/
+
 		}
 		public IActionResult Register()
 		{
@@ -52,7 +78,7 @@ namespace Artysan_App.Controllers
 		public async Task<IActionResult> Register(RegisterViewModel model)
 		{
 			string msg = await _accountService.CreateUserAsync(model);
-			if(msg == "OK")
+			if (msg == "OK")
 			{
 				return RedirectToAction("Login");
 			}
