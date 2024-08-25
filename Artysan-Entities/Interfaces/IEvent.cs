@@ -18,7 +18,7 @@ namespace Artysan_Entities.Interfaces
 		Task<IEnumerable<EventViewModel>> GetWorkshopEvents(int Id);
 		Task<EventViewModel> Get(int id);
 
-		Task Add(EventViewModel model);
+		void Add(EventViewModel model);
 		Task Update(EventViewModel model);
 		Task Delete(int Id);
 

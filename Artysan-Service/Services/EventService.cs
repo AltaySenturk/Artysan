@@ -28,10 +28,11 @@ namespace Artysan_Service.Services
 
         }
      
-         public async Task Add(EventViewModel model)
+         public void Add(EventViewModel model)
         {
           var eventArtist = _mapper.Map<Event>(model);
-          await _uow.GetRepository<Event>().Add(eventArtist);
+           _uow.GetRepository<Event>().Add(eventArtist);
+           _uow.Commit();
         }
 
         public async Task<EventViewModel> Get(int id)

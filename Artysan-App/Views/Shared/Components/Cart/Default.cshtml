@@ -1,0 +1,37 @@
+@model CartOverlayViewModel
+
+<div id="cart-overlay" class="cart-overlay">
+    <h3>Your Cart</h3>
+    @if (Model.CartItems.Any())
+    {
+        <ul>
+            @foreach (var item in Model.CartItems)
+            {
+                <li>
+                    @item.EventName - @item.EventQuantity x $@item.EventPrice = $@(item.EventQuantity * item.EventPrice)
+                    <br />Date: @item.EventDate
+                </li>
+            }
+        </ul>
+        <p>Total: $@Model.TotalPrice</p>
+        <a href="/Cart" class="btn btn-primary">View Cart</a>
+        <a href="/Checkout" class="btn btn-success">Checkout</a>
+    }
+    else
+    {
+        <p>Your cart is empty.</p>
+    }
+</div>
+
+<style>
+    .cart-overlay {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+</style>

@@ -28,7 +28,18 @@ namespace Artysan_App.Controllers
             TempData["ToplamAdet"] = _cartService.TotalQuantity(cart).ToString();
             if (_cartService.TotalPrice(cart) > 0)
                 TempData["ToplamTutar"] = _cartService.TotalPrice(cart).ToString();
+            //return PartialView("_CartOverlay",cart);
             return View(cart);
+        }
+
+        public IActionResult CartOverlay()
+        {
+            var cart = GetCart();
+            TempData["ToplamAdet"] = _cartService.TotalQuantity(cart).ToString();
+            if (_cartService.TotalPrice(cart) > 0)
+                TempData["ToplamTutar"] = _cartService.TotalPrice(cart).ToString();
+
+            return PartialView("_CartOverlay", cart);
         }
 
         public async Task<IActionResult> Add(int id, int quantity)
@@ -95,7 +106,9 @@ namespace Artysan_App.Controllers
                 SetCart(cart);
 
                 // Redirect to the Index action
-                return RedirectToAction("Index");
+              //  return RedirectToAction("Index");
+             return RedirectToAction("CartOverlay");
+               
             }
             catch (Exception ex)
             {
@@ -112,6 +125,7 @@ namespace Artysan_App.Controllers
             var cart = GetCart();
             cart = _cartService.DeleteFromCart(cart, id);
             SetCart(cart);
+           
             return RedirectToAction("Index");
         }
 

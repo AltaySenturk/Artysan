@@ -231,5 +231,37 @@ Created: Colorib
         $(".size__btn label").removeClass('active');
         $(this).addClass('active');
     });
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartButton = document.getElementById('cartButton');
+        const overlay = document.getElementById('overlay');
+        const cartMenu = document.getElementById('cartMenu');
+        const closeButton = document.getElementById('closeButton');
+        const cartContent = document.getElementById('cartContent');
+    
+        cartButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            overlay.style.display = 'block';
+            cartMenu.style.right = '0';
+            loadCartContent();
+        });
+    
+        closeButton.addEventListener('click', function() {
+            overlay.style.display = 'none';
+            cartMenu.style.right = '-300px';
+        });
+    
+        function loadCartContent() {
+            fetch('/Cart/CartOverlay')
+                .then(response => response.text())
+                .then(html => {
+                    cartContent.innerHTML = html;
+                    setupCartInteractions();
+                })
+                .catch(error => console.error('Error loading cart content:', error));
+        }
+    
+        // ... rest of your JavaScript ...
+    });
+
 
 })(jQuery);

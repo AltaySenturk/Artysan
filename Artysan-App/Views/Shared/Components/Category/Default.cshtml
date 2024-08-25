@@ -1,15 +1,15 @@
-﻿@model List<CategoryViewModel>
+﻿@model List<CategoryViewModel>  
 
-<option selected style="width:10px;">Kategori seçiniz...</option>
-@foreach (var item in Model)
+<option selected style="width:10px;">Kategori seçiniz...</option> 
+@foreach (var item in Model) 
 {
-	@if (item.Id <= 5)
+	@if (item.Id <= 5)  
 	{
-     
+
 		<option value="@item.Id" style="width:10px;"> <a asp-action="Index" asp-controller="Event"
-		asp-route-id="@item.Id">@item.CatName</a>
+		asp-route-id="@item.Id">@item.CatName</a> 
 </option>
 	}
 }
-</select>
+</select> 
 </div>

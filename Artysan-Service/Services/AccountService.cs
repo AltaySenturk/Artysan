@@ -116,6 +116,12 @@ namespace Artysan_Service.Services
 		{
 			await _signInManager.SignOutAsync();*/
 		}
+		public async Task SignOutAsync()
+		{
+			await _signInManager.SignOutAsync();
+		}
+
+
 		public async Task<string> CreateRoleAsync(RoleViewModel model)
 		{
 			string message = string.Empty;
@@ -244,9 +250,6 @@ namespace Artysan_Service.Services
 
 		}
 
-        public Task SignOutAsync()
-        {
-            throw new NotImplementedException();
-        }
-    }
+	
+}
 }
