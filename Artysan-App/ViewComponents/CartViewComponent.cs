@@ -37,7 +37,7 @@ namespace Artysan_App.ViewComponents
     private List<CartViewModel> GetCartItemsFromSession()
     {
         var session = _httpContextAccessor.HttpContext.Session;
-        var cartJson = session.GetString("Cart");
+        var cartJson = session.GetString("cart");
         if (string.IsNullOrEmpty(cartJson))
         {
             return new List<CartViewModel>();

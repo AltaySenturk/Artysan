@@ -7,6 +7,7 @@ using Artysan_Entities.Interfaces;
 using Artysan_Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Artysan_App.Controllers
 {
@@ -15,16 +16,16 @@ namespace Artysan_App.Controllers
     {
         private readonly ICategoryService _categoryService;
         private readonly IEventService _eventService;
+        private readonly ICartService _cartService;
 
 
-
-        public EventController(ICategoryService categoryService, IEventService eventService)
+        public EventController(ICategoryService categoryService, IEventService eventService, ICartService cartService)
         {
             _categoryService = categoryService;
             _eventService = eventService;
-
+            _cartService = cartService;
         }
-
+        List<CartViewModel> cart = new List<CartViewModel>();
         public async Task<IActionResult> Index(string? search, int? category, int? location, string? date)
         {
             var list = await _eventService.GetAll();
@@ -52,11 +53,22 @@ namespace Artysan_App.Controllers
                 {
                     // Handle invalid date input
                 }
+
             }
+            cart = GetCart();
+            // Retrieve the cart from the session or some other storage
+            TempData["ToplamAdet"] = _cartService.TotalQuantity(cart).ToString();
+            if (_cartService.TotalPrice(cart) > 0)
+                TempData["ToplamTutar"] = _cartService.TotalPrice(cart).ToString();
 
             return PartialView("_Eventlist", list);
-        }
 
+        }
+        private List<CartViewModel> GetCart()
+        {
+            var cart = HttpContext.Session.GetString("cart");
+            return cart == null ? new List<CartViewModel>() : JsonConvert.DeserializeObject<List<CartViewModel>>(cart);
+        }
 
         public async Task<IActionResult> Sport(int? id)
         {
@@ -115,12 +127,12 @@ namespace Artysan_App.Controllers
         }
         public async Task<IActionResult> Details(int id)    //id -> movie.Id
         {
-            
-           var detay = await _eventService.Get(id);
+
+            var detay = await _eventService.Get(id);
 
             var detayList = new List<EventViewModel> { detay };
- 
-                return View(detayList);
+
+            return View(detayList);
         }
     }
 }

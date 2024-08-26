@@ -217,18 +217,14 @@
                                     </div>
                                 </a></li>
                         </ul>
-              
-                        <div class="overlay" id="overlay"> </div>
+
+                        <div class="overlay" id="overlay"></div>
                         <div class="cart-menu" id="cartMenu">
-                              @await Component.InvokeAsync("Cart")
+                            @await Component.InvokeAsync("Cart")
                             <button class="close-button" id="closeButton">Close</button>
 
-                            <div id="cartContent">
-                        
-                                <!-- The cart content will be loaded here -->
-                            </div>
                         </div>
-                        
+
                         <script>
                             const cartButton = document.getElementById('cartButton');
                             const cartMenu = document.getElementById('cartMenu');

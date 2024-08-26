@@ -82,6 +82,7 @@ namespace Artysan_Service.Services
 					UserName = user.UserName,
 					FirstName = user.FirstName,
 					LastName = user.LastName,
+					PhoneNumber=user.PhoneNumber,
 					Email = user.Email,
 					// Add other properties as needed
 				};

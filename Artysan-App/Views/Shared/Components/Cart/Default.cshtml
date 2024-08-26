@@ -1,37 +1,54 @@
 @model CartOverlayViewModel
 
-<div id="cart-overlay" class="cart-overlay">
-    <h3>Your Cart</h3>
-    @if (Model.CartItems.Any())
-    {
-        <ul>
-            @foreach (var item in Model.CartItems)
+
+<h3>Sepetiniz</h3>
+@if (Model.CartItems.Any())
+{
+    <ul style="font-size: medium; font-family:Helvetica,helvetica nueu; text-decoration: none;">
+    @foreach (var item in Model.CartItems)
+        {
+
+              <li> Etkinlik:@item.EventName</li>   
+               <li> Adet:@item.EventQuantity</li>
+                <li>Fiyatı:$@item.EventPrice = $@(item.EventQuantity * item.EventPrice)</li>
+                <br />
+    
+       } 
+    </ul>
+    <p>Total: $ @if (TempData["ToplamTutar"] != null)
             {
-                <li>
-                    @item.EventName - @item.EventQuantity x $@item.EventPrice = $@(item.EventQuantity * item.EventPrice)
-                    <br />Date: @item.EventDate
-                </li>
+                @TempData["ToplamTutar"]
             }
-        </ul>
-        <p>Total: $@Model.TotalPrice</p>
-        <a href="/Cart" class="btn btn-primary">View Cart</a>
-        <a href="/Checkout" class="btn btn-success">Checkout</a>
-    }
-    else
-    {
-        <p>Your cart is empty.</p>
-    }
-</div>
+            
+    </p>
+    
+    <a href="/Cart/Index" class="btn btn-primary">View Cart</a>
+    <a href="/Shopping/ConfirmAddress" class="btn btn-success">Checkout</a>
+}
+else
+{
+    <p>Sepetiniz boştur.</p>
+}
+
 
 <style>
-    .cart-overlay {
+    .overlay {
         position: fixed;
         top: 20px;
         right: 20px;
         background-color: white;
         border: 1px solid #ddd;
         padding: 15px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
     }
 </style>
+<script>
+    document.getElementById('cartButton').addEventListener('click', function () {
+        document.getElementById('overlay').style.display = 'contents';
+    });
+
+    document.getElementById('closeCartButton').addEventListener('click', function () {
+        document.getElementById('overlay').style.display = 'none';
+    });
+</script>

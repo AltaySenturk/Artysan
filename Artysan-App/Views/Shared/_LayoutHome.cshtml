@@ -236,24 +236,21 @@
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span> </li>
 
-
-                            <li>
-                                <a href="#" id="cartButton">
-                                    <span class="icon_bag_alt cart-button"></span>
-                                    <div class="tip">2</div>
-                                </a>
-                            </li>
+                            <li><a><span class="icon_bag_alt cart-button" id="cartButton"></span>
+                                    <div class=" tip">@TempData["ToplamAdet"]
+                                    </div>
+                                </a></li>
                         </ul>
-                       <div id="cart">
-                        <div class="overlay" id="overlay"></div>
-                        <div class="cart-menu" id="cartMenu">
-                        
-                            <button class="close-button" id="closeButton">Close</button>
-                            <div id="cartContent">
-                                
-                                <!-- The cart content will be loaded here -->
+                    
+                            <div class="overlay" id="overlay"></div>
+                            <div class="cart-menu" id="cartMenu">
+
+                                <button class="close-button" id="closeButton">Close</button>
+                                <div id="cartContent">
+
+                                    <!-- The cart content will be loaded here -->
+                  
                             </div>
-                        </div>
                         </div>
 
                         <script>
