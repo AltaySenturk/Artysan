@@ -84,5 +84,9 @@ namespace Artysan_DAL.Repositories
 		{
 			return await _dbSet.FindAsync(id);
 		}
-	}
+        public T GetById(int id)
+        {
+            return _dbSet.Find(id);
+        }
+    }
 }

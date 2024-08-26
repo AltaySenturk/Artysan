@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Artysan_DAL.UnitOfWorks;
 using Artysan_Entities.Entites;
 using Artysan_Entities.Interfaces;
 using Artysan_Entities.UnitOfWorks;
 using Artysan_Entities.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Artysan_Service.Services
 {
@@ -14,11 +17,14 @@ namespace Artysan_Service.Services
     {
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
+        private readonly IRepository<Event> _eventRepository;
 
-        public EventService(IUnitOfWork uow, IMapper mapper)
+
+        public EventService(IUnitOfWork uow, IMapper mapper, IRepository<Event> eventRepository)
         {
             _uow = uow;
             _mapper = mapper;
+            _eventRepository = eventRepository;
         }
 
         public async Task<IEnumerable<EventViewModel>> GetAll()
@@ -47,10 +53,14 @@ namespace Artysan_Service.Services
             _uow.GetRepository<Event>().Update(eventArtist);
         }
 
-        public async Task Delete(int Id)
+        public void Delete(int id)
         {
-            var eventArtist = await _uow.GetRepository<Event>().GetByIdAsync(Id);
-           _uow.GetRepository<Event>().Delete(eventArtist);
+            var eventToDelete = _eventRepository.GetById(id);
+            if (eventToDelete != null)
+            {
+                _eventRepository.Delete(eventToDelete);
+                _uow.Commit();
+            }
         }
 
         public async Task<IEnumerable<EventViewModel>> GetSportEvents(int Id)
@@ -137,6 +147,21 @@ namespace Artysan_Service.Services
 
             return eventViewModels;
         }
-    }
+        //
+        public Event GetById(int id)
+        {
+            return _eventRepository.GetById(id);
+        }
+		public void Update(Event eventToUpdate)
+		{
+			var existingEvent = _eventRepository.GetById(eventToUpdate.Id);
+			if (existingEvent != null)
+			{
+				_mapper.Map(eventToUpdate, existingEvent);
+				_uow.Commit();
+			}
+		}
+
+	}
 } 
     

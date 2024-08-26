@@ -1,10 +1,13 @@
 ﻿using Artysan_DAL.Contexts;
 using Artysan_DAL.Models;
+using Artysan_DAL.Repositories;
 using Artysan_DAL.UnitOfWorks;
+using Artysan_Entities.Entites;
 using Artysan_Entities.Interfaces;
 using Artysan_Entities.UnitOfWorks;
 using Artysan_Service.Mapping;
 using Artysan_Service.Services;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -38,12 +41,14 @@ namespace Artysan_Service.Extensions
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IRepository<Event>, Repository<Event>>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAccountService), typeof(AccountService));
             services.AddScoped<IEventSaleService, EventSaleService>();
             services.AddScoped<IEventSaleDetailService, EventSaleDetailService>();
-//            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            
+            //            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddAutoMapper(typeof(MappingProfile));
 
