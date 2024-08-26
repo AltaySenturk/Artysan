@@ -30,18 +30,25 @@ namespace Artysan_App.Controllers
 		public async Task<IActionResult> Login(LoginViewModel model)
 		{
 			var result = await _accountService.FindByNameAsync(model);
-			if (result.Status == "Kullanıcı bulunamadı!")
-			{
-				ModelState.AddModelError("", result.Status);
-				return View(model);
-			}
-			else if (result.Status == "OK")
-			{
-				// Assuming _accountService.FindByNameAsync now returns user data
-				var userViewModel = result.User; // This should be a UserViewModel object
-				HttpContext.Session.SetJson("user", userViewModel);
-				return RedirectToAction("ConfirmAddress", "Shopping");
-			}
+		
+		    if (result.Status == "Kullanıcı bulunamadı!")
+				{
+					ModelState.AddModelError(" kullancı yok", result.Status);
+					return View(model);
+				}
+				else if (result.Status == "OK")
+				{
+					return Redirect(model.ReturnUrl ?? "/Home/Index");
+				}
+
+				else
+				{
+
+					ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
+
+				}
+
+			
 
 			// Handle other cases
 			return View(model);

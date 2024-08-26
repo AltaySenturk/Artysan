@@ -1,29 +1,38 @@
 @model CartOverlayViewModel
 
+<div style="display:flex;flex-direction: row;align-content: flex-start;justify-content: space-between;">
+    <h3>Sepetiniz</h3>
+    <button class="btn-close" id="closeButton">
+        <span class="icon-cross"></span>
+    </button>
 
-<h3>Sepetiniz</h3>
+</div>
+<hr />
 @if (Model.CartItems.Any())
 {
-    <ul style="font-size: medium; font-family:Helvetica,helvetica nueu; text-decoration: none;">
+    <ul style="font-size: medium; font-family:Helvetica,helvetica nueu; list-style-type: none; display: contents;">
     @foreach (var item in Model.CartItems)
         {
 
-              <li> Etkinlik:@item.EventName</li>   
-               <li> Adet:@item.EventQuantity</li>
-                <li>Fiyatı:$@item.EventPrice = $@(item.EventQuantity * item.EventPrice)</li>
-                <br />
-    
-       } 
+            <li>Etkinlik:@item.EventName</li>
+            <li>Adet:@item.EventQuantity</li>
+            <li>Baz Fiyat:₺@item.EventPrice x @item.EventQuantity </li>
+            <li>Fiyatı:₺@(item.EventQuantity * item.EventPrice)</li>
+            <hr />
+
+        }
     </ul>
-    <p>Total: $ @if (TempData["ToplamTutar"] != null)
+    <p>
+    <strong>Total: ₺@if (TempData["ToplamTutar"] != null)
             {
                 @TempData["ToplamTutar"]
             }
-            
+
+        </strong>
     </p>
-    
-    <a href="/Cart/Index" class="btn btn-primary">View Cart</a>
-    <a href="/Shopping/ConfirmAddress" class="btn btn-success">Checkout</a>
+
+    <a href="/Cart/Index" class=" btn btn-primary" style="background-color:#1976D2;">View Cart</a>
+    <a href="/Shopping/Checkout"class=" btn btn-success" style="background-color: #4CAF50;">Checkout</a>
 }
 else
 {

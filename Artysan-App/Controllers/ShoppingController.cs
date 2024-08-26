@@ -39,41 +39,61 @@ namespace Artysan_App.Controllers
         {
             return View();
         }
-        public IActionResult Login()
+        public IActionResult Checkout()
         {
-
-
-            // return View();
-            //return View();
-            return RedirectToAction("Login", "Account");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
-        {
-            //if (ModelState.IsValid)
-            //{
-            var customer = _customerRepo.GetAll().FirstOrDefault(c => c.User.Email == model.User.Email && c.Password == model.Password);
-            if (customer == null)
+            if (User.Identity.IsAuthenticated)
             {
-                ModelState.AddModelError("", "Hatalı email veya şifre girişi!");
+                return RedirectToAction("ConfirmAddress");
             }
             else
             {
-                HttpContext.Session.SetJson("user", customer);  //login olan customer bilgilerini session'a kayıt ediyoruz.
+                return RedirectToAction("Login", "Account");
+            }
+
+
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Login(LoginViewModel model)
+        //{ 
+        /*
+            var result = await _accountService.FindByNameAsync(model);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var userViewModel = result.User;
+                HttpContext.Session.SetJson("user", userViewModel);
                 return RedirectToAction("ConfirmAddress");
             }
-            // }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }*/
 
-            return View(model);
+
+        //if (ModelState.IsValid)
+        //{ 
+        /*
+        var customer = _customerRepo.GetAll().FirstOrDefault(c => c.User.Email == model.User.Email && c.Password == model.Password);
+        if (customer == null)
+        {
+            ModelState.AddModelError("", "Hatalı email veya şifre girişi!");
         }
+        else
+        {
+            HttpContext.Session.SetJson("user", customer);  //login olan customer bilgilerini session'a kayıt ediyoruz.
+            return RedirectToAction("ConfirmAddress");
+        }*/
+        // }
+
+        // }
         public IActionResult ConfirmAddress()
         {
             //Güvenlik için login olan kullanıcı bilgilerini session'dan çağırıp kontrol ediyoruz.
             var customer = HttpContext.Session.GetJson<UserViewModel>("user");
             if (customer == null)
             {
-                return RedirectToAction("Login");
+                //return RedirectToAction("Checkout");
             }
             return View(_mapper.Map<UserViewModel>(customer));
         }
@@ -83,17 +103,18 @@ namespace Artysan_App.Controllers
             _customerRepo.Update(_mapper.Map<UserViewModel>(model)); //view'dan gelen kullanıcı bilgilerinin son halini veritabanına update ediyoruz.
             HttpContext.Session.SetJson("user", model); //Kullanıcının bilgileri değişmiş olabileceğinden son halini session'a kayıt ediyoruz.
             return RedirectToAction("ConfirmPayment");
+         //   return View();
         }
         public IActionResult ConfirmPayment()
         {
             var customer = HttpContext.Session.GetJson<AppUser>("user");
             if (customer == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
             //sepet bilgileri session'dan çekilecek
             List<CartViewModel> cart = HttpContext.Session.GetJson<List<CartViewModel>>("cart");
-             var toplamAdet = _cartRepo.TotalQuantity(cart);
+            var toplamAdet = _cartRepo.TotalQuantity(cart);
             var toplamTutar = _cartRepo.TotalPrice(cart);
 
             EventSaleViewModel filmSatisViewModel = new EventSaleViewModel
