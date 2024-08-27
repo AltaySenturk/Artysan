@@ -232,11 +232,8 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span> </li>
-
-                            <li><a class="icon_bag_alt cart-button" id="cartButton">
-                                    <div class="tip"> @TempData["ToplamAdet"]
-                                    </div>
-                                </a></li>
+                            
+                            <li><a class="icon_bag_alt cart-button" id="cartButton"></a></li>
                         </ul>
 
                         <div class="overlay" id="overlay"></div>
@@ -246,7 +243,7 @@
 
                         </div>
 
-                       <script>
+                        <script>
                             const cartButton = document.getElementById('cartButton');
                             const cartMenu = document.getElementById('cartMenu');
                             const overlay = document.getElementById('overlay');

@@ -39,15 +39,18 @@ namespace Artysan_App.Controllers
         {
             return View();
         }
-        public IActionResult Checkout()
+ 
+        public async Task<IActionResult> Checkout(LoginViewModel model)
         {
+
             if (User.Identity.IsAuthenticated)
             {
+              
                 return RedirectToAction("ConfirmAddress");
             }
             else
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Checking", "Account");
             }
 
 

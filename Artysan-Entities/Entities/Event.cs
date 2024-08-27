@@ -12,7 +12,10 @@ namespace Artysan_Entities.Entites
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? EventDate { get; set; }
+        public bool? IsPopular { get; set; } 
+        public bool? IsFuture {get; set;}
         public int? TicketId { get; set; }
+        public string Description { get; set; }
         public int? Stock { get; set; } 
         public string? ImageUrl { get; set; }
         

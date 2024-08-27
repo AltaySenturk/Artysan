@@ -18,10 +18,12 @@ namespace Artysan_Entities.ViewModels
 		[Required(ErrorMessage = "Kullanıcı Adı boş geçilemez!")]
 		[Display(Name = "Kullanıcı Adı")]
 		public string? UserName { get; set; }
-		[Required(ErrorMessage = "Telefon numarası boş geçilemez!")] 
+		[Required(ErrorMessage = "Telefon numarası boş geçilemez!")]
 		public string? PhoneNumber { get; set; }
 		[Required(ErrorMessage = "Email adresi boş geçilemez!")]
 		[EmailAddress(ErrorMessage = "Email formatına uygun değil!")]
 		public string? Email { get; set; }
+		[Required(ErrorMessage = "Adres boş geçilemez!")]
+		public string Address { get; set; }
 	}
 }

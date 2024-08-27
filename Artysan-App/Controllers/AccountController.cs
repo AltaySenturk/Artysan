@@ -30,25 +30,26 @@ namespace Artysan_App.Controllers
 		public async Task<IActionResult> Login(LoginViewModel model)
 		{
 			var result = await _accountService.FindByNameAsync(model);
-		
-		    if (result.Status == "Kullanıcı bulunamadı!")
-				{
-					ModelState.AddModelError(" kullancı yok", result.Status);
-					return View(model);
-				}
-				else if (result.Status == "OK")
-				{
-					return Redirect(model.ReturnUrl ?? "/Home/Index");
-				}
 
-				else
-				{
+			if (result.Status == "Kullanıcı bulunamadı!")
+			{
+				ModelState.AddModelError(" kullancı yok", result.Status);
+				return View(model);
+			}
+			else if (result.Status == "OK")
+			{
+                var userViewModel = result.User; // This should be a UserViewModel object
+				HttpContext.Session.SetJson("user", userViewModel);
+				return Redirect(model.ReturnUrl ?? "/Home/Index");
+			}
 
-					ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
 
-				}
+			else
+			{
+				ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
+			}
+ 
 
-			
 
 			// Handle other cases
 			return View(model);
@@ -76,6 +77,43 @@ namespace Artysan_App.Controllers
 			}
 			return View(model);*/
 
+		}
+		public async Task<IActionResult> Checking(string? ReturnUrl)
+		{
+			LoginViewModel model = new LoginViewModel()
+			{
+				ReturnUrl = ReturnUrl
+			};
+			return View(model);
+
+		}
+		[HttpPost] 
+		public async Task<IActionResult> Checking(LoginViewModel model)
+		{
+			var result = await _accountService.FindByNameAsync(model);
+
+			if (result.Status == "Kullanıcı bulunamadı!")
+			{
+				ModelState.AddModelError(" kullancı yok", result.Status);
+				return View(model);
+			}
+			else if (result.Status == "OK")
+			{
+				var userViewModel = result.User; // This should be a UserViewModel object
+				HttpContext.Session.SetJson("user", userViewModel);
+				return Redirect(model.ReturnUrl ?? "/Shopping/ConfirmAddress");
+			}
+
+
+			else
+			{
+				ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
+			}
+
+
+
+			// Handle other cases
+			return View(model);
 		}
 		public IActionResult Register()
 		{

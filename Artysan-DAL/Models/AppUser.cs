@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Artysan_DAL.Models
 {
-	public class AppUser : IdentityUser<int>
-	{
+    public class AppUser : IdentityUser<int>
+    {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+         public string Address { get; set; }
     }
 }
