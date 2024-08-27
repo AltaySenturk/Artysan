@@ -43,6 +43,7 @@ namespace Artysan_Service.Services
 				LastName = model.LastName,
 				Email = model.Email,
 				PhoneNumber = model.PhoneNumber,
+				Address = model.Address,
 				UserName = model.UserName
 			};
 			var identityResult = await _userManager.CreateAsync(user, model.Password);
@@ -83,6 +84,7 @@ namespace Artysan_Service.Services
 					FirstName = user.FirstName,
 					LastName = user.LastName,
 					PhoneNumber=user.PhoneNumber,
+					Address=user.Address,
 					Email = user.Email,
 					// Add other properties as needed
 				};

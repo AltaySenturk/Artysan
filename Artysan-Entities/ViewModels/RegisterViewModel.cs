@@ -22,6 +22,7 @@ namespace Artysan_Entities.ViewModels
 		[Required(ErrorMessage = "Email adresi boş geçilemez!")]
 		[EmailAddress(ErrorMessage = "Email formatına uygun değil!")]
 		public string Email { get; set; }
+		public string Address { get; set; }
 		[Required(ErrorMessage = "Şifre alanı boş geçilemez!")]
 		[Display(Name = "Şifre")]
 		[DataType(DataType.Password)]
