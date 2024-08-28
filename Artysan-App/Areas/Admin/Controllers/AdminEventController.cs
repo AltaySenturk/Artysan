@@ -43,45 +43,57 @@ namespace Artysan_App.Areas.Admin.Controllers
 			_eventService.Add(model);
 			return RedirectToAction("Index");
 		}
-        
-        public IActionResult Delete(int id)
-        {
-            try
-            {
-                _eventService.Delete(id);
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                // Hata durumunda kullanıcıya mesaj gösterebilirsiniz.
-                TempData["Error"] = "Silme işlemi sırasında bir hata oluştu.";
-                return RedirectToAction("Index");
-            }
-        }
-		[HttpGet]
-		public IActionResult Edit(int id)
+
+		public IActionResult Delete(int id)
 		{
-			var eventToEdit = _eventService.GetById(id);
-			if (eventToEdit == null)
+			try
+			{
+				_eventService.Delete(id);
+				return RedirectToAction("Index");
+			}
+			catch (Exception ex)
+			{
+				// Hata durumunda kullanıcıya mesaj gösterebilirsiniz.
+				TempData["Error"] = "Silme işlemi sırasında bir hata oluştu.";
+				return RedirectToAction("Index");
+			}
+		}
+		public async Task<IActionResult> Edit(int id)
+		{
+			var eventViewModel = await _eventService.Get(id);
+			if (eventViewModel == null)
+			{
+				return NotFound();
+			}
+			return View(eventViewModel);
+		}
+
+		// POST: Events/Edit/5
+		[HttpPost]
+		public async Task<IActionResult> Edit(int id, EventViewModel model)
+		{
+			if (id != model.Id)
 			{
 				return NotFound();
 			}
 
-			var eventModel = _mapper.Map<EventViewModel>(eventToEdit);
-			return View(eventModel);
-		}
-
-		[HttpPost]
-		public IActionResult Edit(EventViewModel model)
-		{
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
-				var eventEntity = _mapper.Map<Event>(model);
-				_eventService.Update(eventEntity);
-				return RedirectToAction("Index");
+				return View(model);
 			}
 
-			return View(model);
+			try
+			{
+				await _eventService.Update(model);
+			}
+			catch (Exception ex)
+			{
+				// Log the exception or handle it appropriately
+				ModelState.AddModelError("", "An error occurred while updating the event.");
+				return View(model);
+			}
+
+			return RedirectToAction("Index");
 		}
 	}
 }

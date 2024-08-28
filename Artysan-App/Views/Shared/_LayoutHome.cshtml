@@ -32,41 +32,31 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a><span class="icon_bag_alt cart-button" id="cartButton"></span>
-                    <div class=" tip">
-                    </div>
-                </a></li>
-        </ul>
-        <div class="overlay" id="overlay"></div>
-        <div class="cart-menu" id="cartMenu">
-            <h2>Your Cart</h2>
-            <button class="close-button" id="closeButton">Close</button>
-
-        </div>
-
-        <div class="offcanvas__logo">
-            <a href="./index.cshtml"><img src="~/img/logo-black.png" alt=""></a>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__auth">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <span>Hoşgeldin @User.Identity.Name</span>
-
-                <a asp-action="Logout" asp-controller="Account">Çıkış Yap</a>
-
-            }
-            else
-            {
-                <a asp-action="Login" asp-controller="Account"> Üye Giriş
-                </a>
 
 
-                <a asp-action="Register" asp-controller="Account">Üye Kayıt
-                </a>
+            <div class="offcanvas__logo">
+                <a href="./index.cshtml"><img src="~/img/logo-black.png" alt=""></a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+            <div class="offcanvas__auth">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span>Hoşgeldin @User.Identity.Name</span>
 
-            }
-        </div>
+                    <a asp-action="Logout" asp-controller="Account">Çıkış Yap</a>
+
+                }
+                else
+                {
+                    <a asp-action="Login" asp-controller="Account"> Üye Giriş
+                    </a>
+
+
+                    <a asp-action="Register" asp-controller="Account">Üye Kayıt
+                    </a>
+
+                }
+            </div>
     </div>
     <!-- Offcanvas Menu End -->
 
@@ -232,13 +222,15 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span> </li>
-                            
-                            <li><a class="icon_bag_alt cart-button" id="cartButton"></a></li>
-                        </ul>
 
+                            <li><a><span class="icon_bag_alt cart-button" id="cartButton"></span>
+                                    <div class=" tip">
+                                    </div>
+                                </a></li>
+                        </ul>
                         <div class="overlay" id="overlay"></div>
                         <div class="cart-menu" id="cartMenu">
-
+                            <h2>Your Cart</h2>
                             <button class="close-button" id="closeButton">Close</button>
 
                         </div>
@@ -361,6 +353,7 @@
 
     </div>
     <!-- Search End -->
+    
 
     <!-- Js Plugins -->
     <script src="~/js/jquery-3.3.1.min.js"></script>

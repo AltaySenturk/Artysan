@@ -67,12 +67,27 @@ namespace Artysan_Service.Services
 
             return eventViewModel;
         }
-        public async Task Update(EventViewModel model)
+        public async Task<bool> Update(EventViewModel model)
         {
-            var eventArtist = _mapper.Map<Event>(model);
-            _uow.GetRepository<Event>().Update(eventArtist);
-        }
+            if (model == null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
 
+            var eventEntity = _mapper.Map<Event>(model);
+            _uow.GetRepository<Event>().Update(eventEntity);
+
+            try
+            {
+                 _uow.CommitAsync();
+                return true; // Update was successful
+            }
+            catch (DbUpdateException)
+            {
+                // Handle specific database update exceptions
+                return false; // Indicate failure
+            }
+        }
         public void Delete(int id)
         {
             var eventToDelete = _eventRepository.GetById(id);
@@ -172,20 +187,14 @@ namespace Artysan_Service.Services
         {
             return _eventRepository.GetById(id);
         }
-        public void Update(Event eventToUpdate)
-        {
-            var existingEvent = _eventRepository.GetById(eventToUpdate.Id);
-            if (existingEvent != null)
-            {
-                _mapper.Map(eventToUpdate, existingEvent);
-                _uow.Commit();
-            }
-        }
+
+
 
         public async Task<IEnumerable<EventViewModel>> Getting()
         {
             var list = await _uow.GetRepository<Event>().GetAll();
             return _mapper.Map<IEnumerable<EventViewModel>>(list);
         }
+
     }
 }

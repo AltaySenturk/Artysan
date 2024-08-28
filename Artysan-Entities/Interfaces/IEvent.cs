@@ -22,10 +22,9 @@ namespace Artysan_Entities.Interfaces
 		Task<EventViewModel> Get(int id);
 
 		void Add(EventViewModel model);
-		Task Update(EventViewModel model);
+		Task<bool> Update (EventViewModel model);
         void Delete(int id);
 		//
 		Event GetById(int id);
-		void Update(Event eventToUpdate);
 	}
 }

@@ -160,7 +160,7 @@
 <!-- Product Section End -->
 
 <!-- Banner Section Begin -->
-<section class="banner set-bg" data-setbg="img/banner/violin.jpg">
+<section class="banner set-bg" data-setbg="/img/banner/violin.jpg">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-8 m-auto">
@@ -392,24 +392,5 @@
         });
     });
 </script>
-<script>
-    const cartButton = document.getElementById('cartButton');
-    const cartMenu = document.getElementById('cartMenu');
-    const overlay = document.getElementById('overlay');
-    const closeButton = document.getElementById('closeButton');
 
-    cartButton.addEventListener('click', () => {
-        cartMenu.classList.add('active');
-        overlay.classList.add('active');
-    });
-
-    overlay.addEventListener('click', () => {
-        cartMenu.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-    closeButton.addEventListener('click', () => {
-        cartMenu.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-</script>
 <!-- Instagram End -->

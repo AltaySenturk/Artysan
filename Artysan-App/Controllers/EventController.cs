@@ -129,11 +129,8 @@ namespace Artysan_App.Controllers
         public async Task<IActionResult> Details(int id)
         {
 
-            var detay = await _eventService.Get(id);
-
-            var detayList = new List<EventViewModel> { detay };
-
-            return View(detayList);
+             var cat = await _eventService.GetId(id);
+            return View(cat);
         }
     }
 }

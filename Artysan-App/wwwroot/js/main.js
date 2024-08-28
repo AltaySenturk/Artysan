@@ -231,6 +231,41 @@ Created: Colorib
         $(".size__btn label").removeClass('active');
         $(this).addClass('active');
     });
+    document.addEventListener('DOMContentLoaded', function() {
+        const sliderContainers = document.querySelectorAll('.slider-container');
+    
+        sliderContainers.forEach(function(container) {
+            const slider = container.querySelector('.slider');
+            const nextBtn = container.querySelector('.nextBtn');
+            const prevBtn = container.querySelector('.prevBtn');
+            let currentIndex = 0;
+            const itemCount = slider.children.length;
+            const itemsPerView = 2;
+            const itemWidth = 100; // Width of each item plus margin
+    
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }
+    
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex + itemsPerView < itemCount) {
+                    currentIndex += itemsPerView;
+                } else {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            });
+    
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex - itemsPerView >= 0) {
+                    currentIndex -= itemsPerView;
+                } else {
+                    currentIndex = Math.max(0, itemCount - itemsPerView);
+                }
+                updateSlider();
+            });
+        });
+    });
     
 
 })(jQuery);
