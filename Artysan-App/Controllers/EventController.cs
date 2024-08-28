@@ -76,9 +76,9 @@ namespace Artysan_App.Controllers
             return View(cat);
 
         }
-        public async Task<IActionResult> SportDetail(int? id)
+        public async Task<IActionResult> SportDetail(int id)
         {
-            var cat = await _eventService.GetId(3);
+            var cat = await _eventService.GetId(id);
             return View(cat);
         }
         public async Task<IActionResult> Theater(int? id)
@@ -87,9 +87,9 @@ namespace Artysan_App.Controllers
             return View(cat);
 
         }
-        public async Task<IActionResult> TheatreDetail(int? id)
+        public async Task<IActionResult> TheatreDetail(int id)
         {
-            var cat = await _eventService.GetId(2);
+            var cat = await _eventService.GetId(id);
             return View(cat);
         }
         public async Task<IActionResult> Cinema(int? id)
@@ -98,9 +98,9 @@ namespace Artysan_App.Controllers
             return View(cat);
 
         }
-        public async Task<IActionResult> CinemaDetail(int? id)
+        public async Task<IActionResult> CinemaDetail(int id)
         {
-            var cat = await _eventService.GetId(4);
+            var cat = await _eventService.GetId(id);
             return View(cat);
         }
         public async Task<IActionResult> Concert(int? id)
@@ -109,9 +109,9 @@ namespace Artysan_App.Controllers
             return View(cat);
 
         }
-        public async Task<IActionResult> ConcertDetail(int? id)
+        public async Task<IActionResult> ConcertDetail(int id)
         {
-            var cat = await _eventService.GetId(1);
+            var cat = await _eventService.GetId(id);
             return View(cat);
         }
         public async Task<IActionResult> Workshop(int? id)
@@ -120,9 +120,9 @@ namespace Artysan_App.Controllers
             return View(cat);
 
         }
-        public async Task<IActionResult> WorkshopDetail(int? id)
+        public async Task<IActionResult> WorkshopDetail(int id)
         {
-            var cat = await _eventService.GetId(5);
+            var cat = await _eventService.GetId(id);
             return View(cat);
         }
 
