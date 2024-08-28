@@ -1,0 +1,107 @@
+@model IEnumerable<EventViewModel>
+<style>
+    .slider-container {
+        width: 1400px;
+        height:250px;
+        overflow: hidden;
+    }
+    .slider {
+        display: flex;
+        
+        transition: transform 0.3s ease-in-out;
+    }
+    .slider-item {
+        flex: 0 0 300px;
+        height: 200px;
+        margin-right: 5px;
+        padding: 10px;
+    }
+    .product__item__pic {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .product__hover {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        width: 100%;
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .product__item__text {
+        padding: 10px;
+        text-align: center;
+    }
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    @@media (max-width: 768px) {
+        .slider-item {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+    @@media (max-width: 480px) {
+        .slider-item {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+</style>
+
+<div class="slider-container">
+    <div class="slider" id="slider">
+        @foreach (var item in Model)
+        {
+            <div class="slider-item">
+                <div class="product__item__pic" style="background-image: url('@item.ImageUrl');">
+               </div>
+                <div class="product__item__text">
+                    <h6><a href="/Event/Details/@item.Id">@item.Name</a></h6>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="button-container">
+    <button id="prevBtn"><</button>
+    <button id="nextBtn">></button>
+</div>
+
+<script>
+    const slider = document.getElementById('slider');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    let currentIndex = 0;
+    const itemCount = slider.children.length;
+    const itemsPerView = 2;
+    const itemWidth = 200; // Width of each item plus margin
+
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex + itemsPerView < itemCount) {
+            currentIndex += itemsPerView;
+        } else {
+            currentIndex = 0;
+        }
+        updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex - itemsPerView >= 0) {
+            currentIndex -= itemsPerView;
+        } else {
+            currentIndex = Math.max(0, itemCount - itemsPerView);
+        }
+        updateSlider();
+    });
+</script>

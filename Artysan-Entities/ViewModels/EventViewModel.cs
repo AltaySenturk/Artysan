@@ -19,6 +19,7 @@ namespace Artysan_Entities.ViewModels
 		public int? CategoryId { get; set; }
 		public int? LocationId { get; set; }
 		public bool IsPopular {get; set;}
+		public bool IsFuture {get; set;}
         public string Description { get; set; }
 		public TicketViewModel Ticket { get; set; }
 		public LocationViewModel Location { get; set; }

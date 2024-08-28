@@ -27,9 +27,9 @@ namespace Artysan_Service.Services
             _eventRepository = eventRepository;
         }
 
-        public async Task<IEnumerable<EventViewModel>> GetAll()
+        public  async Task<IEnumerable<EventViewModel>> GetAll()
         {
-            var list =await _uow.GetRepository<Event>().GetAll();
+            var list = await _uow.GetRepository<Event>().GetAll();
             return _mapper.Map<IEnumerable<EventViewModel>>(list);
 
         }
@@ -162,6 +162,11 @@ namespace Artysan_Service.Services
 			}
 		}
 
-	}
+        public async Task<IEnumerable<EventViewModel>> Getting()
+        {
+            var list = await _uow.GetRepository<Event>().GetAll();
+            return _mapper.Map<IEnumerable<EventViewModel>>(list);
+        }
+    }
 } 
     

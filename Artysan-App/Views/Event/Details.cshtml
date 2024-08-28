@@ -30,6 +30,11 @@
                         <h5>Tarih:@item.EventDate</h5>
 
                     </div>
+                    <div class="text-center">
+                     <form asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id"asp-route-quantity="1"asp-route-ticket="@item.TicketId"  method="get">
+                     <button name="quantity" type="number" value="1" min="1" max="@item.Stock"class="btn-primary" aria-label="Add to cart"></button></form>
+
+                    </div>
                 </div>
             </div>
         }
