@@ -3,8 +3,8 @@
 <option selected>Tarih seçiniz...</option>
 @foreach (var item in Model)
 {
-  <option value="@item.Id "> <a class="dropdown-item" asp-action="Index" asp-controller="Event"
-        asp-route-id="@item.Id">@item.EventDate</a>
+<option value="@item.Id "> <a class="dropdown-item" asp-action="Index" asp-controller="Event"
+        asp-route-id="@item.Id">@item.EventDate</a> 
 </option>
 
 }

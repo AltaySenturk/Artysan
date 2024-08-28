@@ -1,7 +1,7 @@
 @model IEnumerable<EventViewModel>
 <style>
     .slider-container {
-        width: 1400px;
+        width: 1200px;
         height:250px;
         overflow: hidden;
     }
@@ -69,39 +69,5 @@
         }
     </div>
 </div>
-<div class="button-container">
-    <button id="prevBtn"><</button>
-    <button id="nextBtn">></button>
-</div>
 
-<script>
-    const slider = document.getElementById('slider');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    let currentIndex = 0;
-    const itemCount = slider.children.length;
-    const itemsPerView = 2;
-    const itemWidth = 200; // Width of each item plus margin
 
-    function updateSlider() {
-        slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex + itemsPerView < itemCount) {
-            currentIndex += itemsPerView;
-        } else {
-            currentIndex = 0;
-        }
-        updateSlider();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex - itemsPerView >= 0) {
-            currentIndex -= itemsPerView;
-        } else {
-            currentIndex = Math.max(0, itemCount - itemsPerView);
-        }
-        updateSlider();
-    });
-</script>

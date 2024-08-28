@@ -1,7 +1,7 @@
 @model IEnumerable<EventViewModel>
 <style>
     .slider-container {
-        width: 700px;
+        width: 650px;
         height: 200px;
         overflow: hidden;
         position: relative;
@@ -36,22 +36,7 @@
         padding: 10px;
         text-align: center;
     }
-    .button-container {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        pointer-events: none;
-    }
-    .button-container button {
-        background: rgba(255, 255, 255, 0.7);
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        pointer-events: auto;
-    }
+   
     @@media (max-width: 768px) {
         .slider-item {
             flex: 0 0 50%;
@@ -66,8 +51,8 @@
     }
 </style>
 
-<div class="slider-container"style="width: 1240px;";>
-    <div class="slider" id="slider">
+<div class="slider-container"style="width: 1220px;";>
+    <div class="slider" id="slider2">
         @foreach (var item in Model)
         {
             <div class="slider-item">
@@ -79,12 +64,5 @@
             </div>
         }
     </div>
-    <div class="button-container">
-        <button id="prevBtn">&lt;</button>
-        <button id="nextBtn">&gt;</button>
-    </div>
-</div>
-
-   <script src="~/js/main.js"></script>
 
 

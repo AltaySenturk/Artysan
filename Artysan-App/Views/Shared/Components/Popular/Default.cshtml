@@ -85,5 +85,34 @@
     </div>
 </div>
 
+<script>
+    const slider = document.getElementById('slider');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    let currentIndex = 0;
+    const itemCount = slider.children.length;
+    const itemsPerView = 2;
+    const itemWidth = 100; // Width of each item plus margin
 
-    <script src="~/js/main.js"></script>
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex + itemsPerView < itemCount) {
+            currentIndex += itemsPerView;
+        } else {
+            currentIndex = 0;
+        }
+        updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex - itemsPerView >= 0) {
+            currentIndex -= itemsPerView;
+        } else {
+            currentIndex = Math.max(0, itemCount - itemsPerView);
+        }
+        updateSlider();
+    });
+</script>

@@ -224,14 +224,14 @@
                             <li><span class="icon_search search-switch"></span> </li>
 
                             <li><a><span class="icon_bag_alt cart-button" id="cartButton"></span>
-                                    <div class=" tip">
+                                    <div class=" tip">@TempData["ToplamAdet"]
                                     </div>
                                 </a></li>
                         </ul>
                         <div class="overlay" id="overlay"></div>
                         <div class="cart-menu" id="cartMenu">
-                            <h2>Your Cart</h2>
-                            <button class="close-button" id="closeButton">Close</button>
+                             @await Component.InvokeAsync("Cart")
+
 
                         </div>
 
