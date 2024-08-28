@@ -14,7 +14,7 @@ namespace Artysan_Entities.Entites
         public string? EventDate { get; set; }
         public bool? IsPopular { get; set; } 
         public bool? IsFuture {get; set;}
-        public int? TicketId { get; set; }
+        public int TicketId { get; set; }
         public string Description { get; set; }
         public int? Stock { get; set; } 
         public string? ImageUrl { get; set; }
@@ -22,7 +22,7 @@ namespace Artysan_Entities.Entites
         public int? CategoryId { get; set; }
         public virtual Category Category { get; set; }
         
-        public int? LocationId { get; set; }
+        public int LocationId { get; set; }
         public virtual Location Location { get; set; }
         
         public Ticket Ticket { get; set; }

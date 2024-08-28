@@ -27,29 +27,49 @@ namespace Artysan_Service.Services
             _eventRepository = eventRepository;
         }
 
-        public  async Task<IEnumerable<EventViewModel>> GetAll()
+        public async Task<IEnumerable<EventViewModel>> GetAll()
         {
             var list = await _uow.GetRepository<Event>().GetAll();
             return _mapper.Map<IEnumerable<EventViewModel>>(list);
 
         }
-     
-         public void Add(EventViewModel model)
+
+        public void Add(EventViewModel model)
         {
-          var eventArtist = _mapper.Map<Event>(model);
-           _uow.GetRepository<Event>().Add(eventArtist);
-           _uow.Commit();
+            var eventArtist = _mapper.Map<Event>(model);
+            _uow.GetRepository<Event>().Add(eventArtist);
+            _uow.Commit();
         }
 
         public async Task<EventViewModel> Get(int id)
         {
-              var eventt = await _uow.GetRepository<Event>().GetByIdAsync(id);
+            var eventt = await _uow.GetRepository<Event>().GetByIdAsync(id);
             return _mapper.Map<EventViewModel>(eventt);
         }
+        public async Task<EventViewModel> GetId(int Id)
+        {
+            var eventRepo = _uow.GetRepository<Event>();
+            var locationRepo = _uow.GetRepository<Location>();
+            var ticketRepo = _uow.GetRepository<Ticket>();
 
+            var eventEntity = eventRepo.GetById(Id);
+            if (eventEntity == null)
+            {
+                return null;
+            }
+
+            var locationEntity = locationRepo.GetById(eventEntity.LocationId);
+            var ticketEntity = ticketRepo.GetById(eventEntity.TicketId);
+
+            var eventViewModel = _mapper.Map<EventViewModel>(eventEntity);
+            eventViewModel.Location = _mapper.Map<LocationViewModel>(locationEntity);
+            eventViewModel.Ticket = _mapper.Map<TicketViewModel>(ticketEntity);
+
+            return eventViewModel;
+        }
         public async Task Update(EventViewModel model)
         {
-             var eventArtist = _mapper.Map<Event>(model);
+            var eventArtist = _mapper.Map<Event>(model);
             _uow.GetRepository<Event>().Update(eventArtist);
         }
 
@@ -82,7 +102,7 @@ namespace Artysan_Service.Services
 
         public async Task<IEnumerable<EventViewModel>> GetTheaterEvents(int Id)
         {
-           var events = await _uow.GetRepository<Event>().GetAll();
+            var events = await _uow.GetRepository<Event>().GetAll();
             var locations = await _uow.GetRepository<Location>().GetAll();
 
             var sportEvents = events.Where(e => e.CategoryId == Id);
@@ -99,7 +119,7 @@ namespace Artysan_Service.Services
 
         public async Task<IEnumerable<EventViewModel>> GetCinemaEvents(int Id)
         {
-           var events = await _uow.GetRepository<Event>().GetAll();
+            var events = await _uow.GetRepository<Event>().GetAll();
             var locations = await _uow.GetRepository<Location>().GetAll();
 
             var sportEvents = events.Where(e => e.CategoryId == Id);
@@ -152,15 +172,15 @@ namespace Artysan_Service.Services
         {
             return _eventRepository.GetById(id);
         }
-		public void Update(Event eventToUpdate)
-		{
-			var existingEvent = _eventRepository.GetById(eventToUpdate.Id);
-			if (existingEvent != null)
-			{
-				_mapper.Map(eventToUpdate, existingEvent);
-				_uow.Commit();
-			}
-		}
+        public void Update(Event eventToUpdate)
+        {
+            var existingEvent = _eventRepository.GetById(eventToUpdate.Id);
+            if (existingEvent != null)
+            {
+                _mapper.Map(eventToUpdate, existingEvent);
+                _uow.Commit();
+            }
+        }
 
         public async Task<IEnumerable<EventViewModel>> Getting()
         {
@@ -168,5 +188,4 @@ namespace Artysan_Service.Services
             return _mapper.Map<IEnumerable<EventViewModel>>(list);
         }
     }
-} 
-    
+}
