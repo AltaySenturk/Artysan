@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Artysan_Entities.ViewModels.LocationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="text-center" style="font-family: 'Montserrat', sans-serif;">Lokasyon Listesi</h2>
+
+<p>
+    <a asp-action="Add" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Create New
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocImageUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocImageUrl)
+                </td>
+                <td>
+                    <div style="display: inline-block;">
+                        <form asp-action="Edit" asp-controller="AdminLocation" method="get" style="display: inline;">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </form>
+                        <form asp-action="Delete" asp-controller="AdminLocation" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

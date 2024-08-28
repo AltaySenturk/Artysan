@@ -1,8 +1,95 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+﻿@{
+	ViewData["Title"] = "Admin Panel";
+	Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Admin Home Page</h1>
+<div class="container mt-5">
+	<h2 class="text-center" style="font-family: 'Montserrat', sans-serif; color: #333; font-weight: 700;">Admin Panel</h2>
 
+	<div class="row mt-4">
+		<div class="col-md-4">
+			<div class="card text-center shadow-sm border-0">
+				<div class="card-body">
+					<i class="fa fa-calendar fa-3x mb-3" style="color: #007bff;"></i>
+					<h5 class="card-title" style="font-weight: 600;">Etkinlikler</h5>
+					<p class="card-text text-muted">Etkinlikleri yönetmek için buraya tıklayın.</p>
+					<a href="~/Admin/AdminEvent" class="btn btn-outline-primary">Etkinliklere Git</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card text-center shadow-sm border-0">
+				<div class="card-body">
+					<i class="fa fa-music fa-3x mb-3" style="color: #007bff;"></i>
+					<h5 class="card-title" style="font-weight: 600;">Sanatçılar</h5>
+					<p class="card-text text-muted">Sanatçıları yönetmek için buraya tıklayın.</p>
+					<a href="~/Admin/AdminArtist" class="btn btn-outline-primary">Sanatçılara Git</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card text-center shadow-sm border-0">
+				<div class="card-body">
+					<i class="fa fa-map-marker fa-3x mb-3" style="color: #007bff;"></i>
+					<h5 class="card-title" style="font-weight: 600;">Mekanlar</h5>
+					<p class="card-text text-muted">Mekanları yönetmek için buraya tıklayın.</p>
+					<a href="~/Admin/AdminLocation" class="btn btn-outline-primary">Mekanlara Git</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mt-4">
+		<div class="col-md-4">
+			<div class="card text-center shadow-sm border-0">
+				<div class="card-body">
+					<i class="fa fa-tags fa-3x mb-3" style="color: #007bff;"></i>
+					<h5 class="card-title" style="font-weight: 600;">Kategoriler</h5>
+					<p class="card-text text-muted">Kategorileri yönetmek için buraya tıklayın.</p>
+					<a href="~/Admin/AdminCategory" class="btn btn-outline-primary">Kategorilere Git</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card text-center shadow-sm border-0">
+				<div class="card-body">
+					<i class="fa fa-home fa-3x mb-3" style="color: #007bff;"></i>
+					<h5 class="card-title" style="font-weight: 600;">Siteye Geri Dön</h5>
+					<p class="card-text text-muted">Ana siteye geri dönmek için buraya tıklayın.</p>
+					<a href="~/" class="btn btn-outline-primary">Siteye Git</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card text-center shadow-sm border-0">
+				<div class="card-body">
+					<i class="fa fa-users fa-3x mb-3" style="color: #007bff;"></i>
+					<h5 class="card-title" style="font-weight: 600;">Roller</h5>
+					<p class="card-text text-muted">Rolleri yönetmek için buraya tıklayın.</p>
+					<a href="~/Admin/Role/Index" class="btn btn-outline-primary">Rollere Git</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.card {
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		border-radius: 10px;
+	}
+
+		.card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.card i {
+			color: #007bff;
+			transition: color 0.3s ease;
+		}
+
+		.card:hover i {
+			color: #0056b3;
+		}
+</style>

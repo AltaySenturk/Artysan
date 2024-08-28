@@ -47,7 +47,8 @@ namespace Artysan_Service.Extensions
             services.AddScoped(typeof(IAccountService), typeof(AccountService));
             services.AddScoped<IEventSaleService, EventSaleService>();
             services.AddScoped<IEventSaleDetailService, EventSaleDetailService>();
-            
+            services.AddScoped<IRepository<Location>, Repository<Location>>();
+
             //            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddAutoMapper(typeof(MappingProfile));

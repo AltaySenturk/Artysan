@@ -21,5 +21,7 @@ namespace Artysan_Entities.Interfaces
 		void Update(T entity);
 		void Delete(int id);
 		void Delete(T entity);
-	}
+		public void Update(int id);
+
+    }
 }

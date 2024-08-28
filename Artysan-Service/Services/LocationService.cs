@@ -14,11 +14,13 @@ namespace Artysan_Service.Services
     {
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
+        private readonly IRepository<Location> _locationRepository;
 
-        public LocationService(IUnitOfWork uow, IMapper mapper)
+        public LocationService(IUnitOfWork uow, IMapper mapper, IRepository<Location> locationRepository)
         {
             _uow = uow;
             _mapper = mapper;
+            _locationRepository = locationRepository;
         }
 
         public async Task<IEnumerable<LocationViewModel>> GetAll()
@@ -27,10 +29,11 @@ namespace Artysan_Service.Services
             return _mapper.Map<IEnumerable<LocationViewModel>>(list);
 
         }
-        public async Task Add(LocationViewModel model)
+        public void Add(LocationViewModel model)
         {
-          var eventArtist = _mapper.Map<Location>(model);
-          await _uow.GetRepository<Location>().Add(eventArtist);
+            var eventArtist = _mapper.Map<Location>(model);
+            _uow.GetRepository<Location>().Add(eventArtist);
+            _uow.Commit();
         }
 
         public async Task<LocationViewModel> Get(int id)
@@ -45,10 +48,19 @@ namespace Artysan_Service.Services
             _uow.GetRepository<Location>().Update(eventArtist);
         }
 
-        public async Task Delete(int Id)
+        //public async Task Delete(int Id)
+        //{
+        //    var eventArtist = await _uow.GetRepository<Location>().GetByIdAsync(Id);
+        //   _uow.GetRepository<Location>().Delete(eventArtist);
+        //}
+        public void Delete(int id)
         {
-            var eventArtist = await _uow.GetRepository<Location>().GetByIdAsync(Id);
-           _uow.GetRepository<Location>().Delete(eventArtist);
+            var locationToDelete = _locationRepository.GetById(id);
+            if (locationToDelete != null)
+            {
+                _locationRepository.Delete(locationToDelete);
+                _uow.Commit();
+            }
         }
 
     }

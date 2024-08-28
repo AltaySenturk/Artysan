@@ -1,5 +1,7 @@
 ﻿using Artysan_DAL.Contexts;
+using Artysan_Entities.Entites;
 using Artysan_Entities.Interfaces;
+using Artysan_Entities.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,12 +27,25 @@ namespace Artysan_DAL.Repositories
 			await _dbSet.AddAsync(entity);
 			
 		}
-		public void Update(T entity)
+        //public void Update(Event eventToUpdate)
+        //{
+        //	var existingEvent = _context.Events.Find(eventToUpdate.Id);
+        //	if (existingEvent != null)
+        //	{
+        //		_context.Entry(existingEvent).CurrentValues.SetValues(eventToUpdate);
+        //	}
+        //}
+		public void Update(int id)
 		{
-			_dbSet.Update(entity);
-			
-		}
-		public void Delete(int id)
+            var entity = _dbSet.Find(id);
+            _dbSet.Update(entity);
+        }
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
+            
+        }
+        public void Delete(int id)
 		{
 			var entity = _dbSet.Find(id);
 			_dbSet.Remove(entity);
@@ -88,5 +103,6 @@ namespace Artysan_DAL.Repositories
         {
             return _dbSet.Find(id);
         }
+       
     }
 }

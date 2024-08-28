@@ -1,0 +1,60 @@
+﻿@model Artysan_Entities.ViewModels.LocationViewModel
+
+@{
+    ViewData["Title"] = "Create Location";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        Create Location
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Add" asp-controller="AdminLocation" asp-area="Admin" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Venue" class="control-label">
+                                Venue
+                            </label>
+                            <input asp-for="Venue" class="form-control" placeholder="Enter venue name" />
+                            <span asp-validation-for="Venue" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="EventUrl" class="control-label">
+                                Event URL
+                            </label>
+                            <input asp-for="EventUrl" class="form-control" placeholder="Enter event URL" />
+                            <span asp-validation-for="EventUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="LocImageUrl" class="control-label">
+                                Location Image URL
+                            </label>
+                            <input type="file" asp-for="LocImageUrl" class="form-control" placeholder="Enter location image URL" />
+                            <span asp-validation-for="LocImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                Create Location
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-controller="AdminLocation" asp-action="Index" asp-area="Admin" class="btn btn-secondary">
+                    Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

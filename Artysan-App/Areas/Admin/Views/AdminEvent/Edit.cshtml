@@ -5,7 +5,19 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        Etkinliği Düzenle
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Formu güncellemek için, action "Update" ve method "post" olarak ayarlanıyor -->
+                    <form asp-action="Edit" asp-controller="AdminEvent" asp-area="Admin" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
 <h4>EventViewModel</h4>
 <hr />
