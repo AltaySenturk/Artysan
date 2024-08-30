@@ -1,4 +1,4 @@
-﻿@model EventViewModel
+﻿@model Artysan_Entities.ViewModels.EventViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,7 +11,7 @@
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
                     <h3 class="mb-0">
-                        Etkinliği Düzenle
+                        Edit Event
                     </h3>
                 </div>
                 <div class="card-body">
@@ -19,94 +19,65 @@
                     <form asp-action="Edit" asp-controller="AdminEvent" asp-area="Admin" method="post">
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-<h4>EventViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" readonly />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EventDate" class="control-label"></label>
-                <input asp-for="EventDate" class="form-control" type="date" />
-                <span asp-validation-for="EventDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TicketId" class="control-label"></label>
-                <input asp-for="TicketId" class="form-control" />
-                <span asp-validation-for="TicketId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Stock" class="control-label"></label>
-                <input asp-for="Stock" class="form-control" />
-                <span asp-validation-for="Stock" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label">Description</label>
-                <input asp-for="Description" class="form-control" placeholder="Enter available stock" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IsFuture" class="control-label">Is Future</label>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input asp-for="IsFuture" type="radio" value="true" class="form-check-input" />
-                        <label class="form-check-label">Yes</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input asp-for="IsFuture" type="radio" value="false" class="form-check-input" />
-                        <label class="form-check-label">No</label>
-                    </div>
+                        <!-- Event ID'sini gizli bir input ile formda saklıyoruz -->
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Event Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter event name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="EventDate" class="control-label">Event Date</label>
+                            <input asp-for="EventDate" class="form-control" type="text" placeholder="dd.mm.yyyy" />
+                            <span asp-validation-for="EventDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TicketId" class="control-label">Ticket ID</label>
+                            <input asp-for="TicketId" class="form-control" placeholder="Enter ticket ID" />
+                            <span asp-validation-for="TicketId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Stock" class="control-label">Stock</label>
+                            <input asp-for="Stock" class="form-control" placeholder="Enter available stock" />
+                            <span asp-validation-for="Stock" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ImageUrl" class="control-label">Image URL</label>
+                            <input type="file" asp-for="ImageUrl" class="form-control" placeholder="Enter image URL" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CategoryId" class="control-label">Category ID</label>
+                            <input asp-for="CategoryId" class="form-control" placeholder="Enter category ID" />
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="LocationId" class="control-label">Location ID</label>
+                            <input asp-for="LocationId" class="form-control" placeholder="Enter location ID" />
+                            <span asp-validation-for="LocationId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                Update Event
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <span asp-validation-for="IsFuture" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="IsPopular" class="control-label">Is Popular</label>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input asp-for="IsPopular" type="radio" value="true" class="form-check-input" />
-                        <label class="form-check-label">Yes</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input asp-for="IsPopular" type="radio" value="false" class="form-check-input" />
-                        <label class="form-check-label">No</label>
-                    </div>
-                </div>
-                <span asp-validation-for="IsPopular" class="text-danger"></span>
+            <div class="text-center mt-3">
+                <a asp-controller="AdminEvent" asp-action="Index" asp-area="Admin" class="btn btn-secondary">
+                    Back to List
+                </a>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LocationId" class="control-label"></label>
-                <input asp-for="LocationId" class="form-control" />
-                <span asp-validation-for="LocationId" class="text-danger"></span>
-            </div>
-            <input type="hidden" name="Id" value="@Model.Id" />
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">Save</button>
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>

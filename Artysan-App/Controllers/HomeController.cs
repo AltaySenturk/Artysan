@@ -9,12 +9,15 @@ namespace Artysan_App.Controllers
 {
     public class HomeController : Controller
     {
+        
         private readonly ICartService _cartService;
-       
+
         List<CartViewModel> cart = new List<CartViewModel>();
 
+       
         public HomeController(ICartService cartService)
         {
+            
             _cartService = cartService;
         }
 
@@ -29,7 +32,7 @@ namespace Artysan_App.Controllers
 
             return View();
         }
-            private List<CartViewModel> GetCart()
+        private List<CartViewModel> GetCart()
         {
             var cart = HttpContext.Session.GetString("cart");
             return cart == null ? new List<CartViewModel>() : JsonConvert.DeserializeObject<List<CartViewModel>>(cart);
@@ -40,7 +43,6 @@ namespace Artysan_App.Controllers
         {
             return View();
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

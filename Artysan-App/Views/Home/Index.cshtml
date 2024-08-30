@@ -9,22 +9,19 @@
             <select class="custom-select mr-sm-2" id="categorySelect" name="category">
                 @await Component.InvokeAsync("Category")
             </select>
-
             <div class="col-auto my-1">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Yer</label>
                 <select class="custom-select" id="locationSelect" name="location">
                     @await Component.InvokeAsync("Location")
                 </select>
-
                 <div class="col-auto">
-
                     <div class="date-picker-title">
                         <label class="mr-sm-2" for="datepicker">Tarih</label>
                     </div>
                     <div class="date-picker-container">
                         <input type="date" class="form-control date-input" id="datepicker">
                         <span class="calendar-icon">📅</span>
-                    
+
                     </div>
                 </div>
 
@@ -54,24 +51,21 @@
                         uiLibrary: 'bootstrap5'
                     });
                 </script>
-
             </div>
         </div>
 </form>
 <div id="searchResults"></div>
-
 <!-- Categories Section Begin -->
 <section class="categories">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="categories__item categories__large__item set-bg"
-                    data-setbg="https://img.freepik.com/premium-photo/group-balls-sports-illustration-background-ai-generated_206846-3004.jpg">
+                     data-setbg="https://img.freepik.com/premium-photo/group-balls-sports-illustration-background-ai-generated_206846-3004.jpg">
                     <div class="categories__text">
                         <h2 style=" color:snow;">Spor</h2>
                         <a style="color: snow;display: inline-block;" asp-area="" asp-controller="Event"
-                            asp-action="Sport"> Shop now</a>
+                           asp-action="Sport"> Shop now</a>
                     </div>
                 </div>
             </div>
@@ -79,48 +73,46 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg"
-                            data-setbg="https://as1.ftcdn.net/v2/jpg/03/20/56/94/1000_F_320569480_mohiHpUxGFQv8nGE6DDnZvDWzTpgOEk0.jpg">
+                             data-setbg="https://as1.ftcdn.net/v2/jpg/03/20/56/94/1000_F_320569480_mohiHpUxGFQv8nGE6DDnZvDWzTpgOEk0.jpg">
                             <div class="categories__text"
-                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                                 style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                 <h4 style="color: snow; margin: 0;">Sinema</h4>
                                 <a style="color: snow;display: inline-block;" asp-area="" asp-controller="Event"
-                                    asp-action="Cinema"> Shop now</a>
+                                   asp-action="Cinema"> Shop now</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg"
-                            data-setbg="https://media.istockphoto.com/id/1328201960/vector/two-theater-masks-comedy-and-drama-symbol.jpg?s=612x612&w=0&k=20&c=jsmOqB1ojCFrMCvpWmpwlwKetm2zFdaM_4_RfkhHZCc=">
+                             data-setbg="https://media.istockphoto.com/id/1328201960/vector/two-theater-masks-comedy-and-drama-symbol.jpg?s=612x612&w=0&k=20&c=jsmOqB1ojCFrMCvpWmpwlwKetm2zFdaM_4_RfkhHZCc=">
                             <div class="categories__text"
-                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                                 style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                 <h4 style="color: snow; margin: 0;">Tiyatro</h4>
                                 <a style="color: snow;display: inline-block;" asp-area="" asp-controller="Event"
-                                    asp-action="Theater"> Shop now</a>
+                                   asp-action="Theater"> Shop now</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0" style="position: relative;">
                         <div class="categories__item set-bg"
-                            data-setbg="https://www.kampustenevar.com/upload/Metaverse_Konserleri_-_TeknoCase_66725.png">
+                             data-setbg="https://www.kampustenevar.com/upload/Metaverse_Konserleri_-_TeknoCase_66725.png">
                             <div class="categories__text"
-                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                                 style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                 <h4 style="color: snow; margin: 0;">Konser</h4>
                                 <a style="color: snow;display: inline-block;" asp-area="" asp-controller="Event"
-                                    asp-action="Concert"> Shop now</a>
+                                   asp-action="Concert"> Shop now</a>
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg"
-                            data-setbg="https://as1.ftcdn.net/v2/jpg/04/34/66/54/1000_F_434665468_Xh0E3MdXPP2te5EpFDCWaqupkl4IIpBg.jpg"
-                            style="position: relative;">
+                             data-setbg="https://as1.ftcdn.net/v2/jpg/04/34/66/54/1000_F_434665468_Xh0E3MdXPP2te5EpFDCWaqupkl4IIpBg.jpg"
+                             style="position: relative;">
                             <div class="categories__text"
-                                style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                                 style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
                                 <h4 style="color: snow; margin: 0;">Workshops</h4>
                                 <a style="color: snow;display: inline-block;" asp-area="" asp-controller="Event"
-                                    asp-action="Workshop"> Shop now</a>
+                                   asp-action="Workshop"> Shop now</a>
                             </div>
                         </div>
                     </div>
@@ -145,16 +137,16 @@
         <div class="row property__gallery">
             <div class="col-lg-3 col-md-4 col-sm-6 mix women" style="width: max-content;">
                 <div class="product__item">
-                @await Component.InvokeAsync("Popular")
-                    
+                    @await Component.InvokeAsync("Popular")
+
                 </div>
             </div>
-          
-         
-          
-         
-            
-        
+
+
+
+
+
+
         </div>
     </div>
 </section>
@@ -174,8 +166,8 @@
                     </div>
                     <div class="banner__item">
                         <div class="banner__text">
-                           <span>Eşsiz Etkinlikler</span>
-                            <h1 >Harika Gösteriler </h1>
+                            <span>Eşsiz Etkinlikler</span>
+                            <h1>Harika Gösteriler </h1>
                             <a href="#">Şimdi Al</a>
                         </div>
                     </div>
@@ -192,7 +184,6 @@
     </div>
 </section>
 <!-- Banner Section End -->
-
 <!-- Trend Section Begin -->
 <section class="product spad">
     <div class="container">
@@ -205,13 +196,12 @@
         </div>
         <div class="row property__gallery">
             <div class="col-lg-4 col-md-4">
-                <div class="product__item">
-                     @await Component.InvokeAsync("Vizyon")
-                   
+                <div class="product__item">                   
+                    @await Component.InvokeAsync("Vizyon")
+
                 </div>
             </div>
-       
-            
+
 
         </div>
     </div>
@@ -226,18 +216,16 @@
         <div class="row property__gallery">
             <div class="col-lg-4 col-md-4">
                 <div class="product__item">
-                       @await Component.InvokeAsync("Future")
-                
+                    @await Component.InvokeAsync("Future")
+
                 </div>
             </div>
-           
-           
+
 
         </div>
     </div>
 </section>
 <!-- Trend Section End -->
-
 <!-- Discount Section Begin -->
 <section class="discount">
     <div class="container">
@@ -279,8 +267,6 @@
     </div>
 </section>
 <!-- Discount Section End -->
-
-
 <!-- Services Section Begin -->
 <section class="services spad">
     <div class="container">
@@ -391,5 +377,4 @@
         });
     });
 </script>
-
 <!-- Instagram End -->
