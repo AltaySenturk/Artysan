@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Artysan_App.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	[Authorize]
-	public class AdminEventController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminEventController : Controller
 	{
 		private readonly IEventService _eventService;
 		private readonly IMapper _mapper;

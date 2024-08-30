@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Artysan_App.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminLocationController : Controller
     {
         private readonly ILocationService _locationService;
