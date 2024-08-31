@@ -32,9 +32,9 @@ namespace Artysan_Service.Extensions
                    opt.Password.RequireDigit = false;
                    opt.User.RequireUniqueEmail = true;
 
-                   opt.User.AllowedUserNameCharacters = "ABCDEFGHIJKLMNOPRSTUVXYWZabcdefghijklmnoprstuvwxyz0123456789_-"; //kullanıcı adı girilirken bunlardan başka birkarakter girilmesine izin vermez.
-                   opt.Lockout.MaxFailedAccessAttempts = 3;  //default 5
-                   opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1); //default 5
+                   opt.User.AllowedUserNameCharacters = "ABCDEFGHIJKLMNOPRSTUVXYWZabcdefghijklmnoprstuvwxyz0123456789_-";
+                   opt.Lockout.MaxFailedAccessAttempts = 3;
+                   opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
                }).AddEntityFrameworkStores<ArtysanDbContext>();
 
             services.AddScoped<IEventService, EventService>();

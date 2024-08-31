@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Artysan_App.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    public class HomeController : Controller
+	[Authorize(Roles = "Admin")]
+	public class HomeController : Controller
 	{
 		
 		public IActionResult Index()

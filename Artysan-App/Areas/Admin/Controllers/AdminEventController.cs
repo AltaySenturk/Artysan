@@ -36,7 +36,7 @@ namespace Artysan_App.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				ModelState.AddModelError("", "Kullanıcı kaydı gerçekleşmedi!");
+				ModelState.AddModelError("", "Etkinlik kaydı gerçekleşmedi!");
 				return View(model);
 			}
 
@@ -53,7 +53,7 @@ namespace Artysan_App.Areas.Admin.Controllers
 			}
 			catch (Exception ex)
 			{
-				// Hata durumunda kullanıcıya mesaj gösterebilirsiniz.
+				
 				TempData["Error"] = "Silme işlemi sırasında bir hata oluştu.";
 				return RedirectToAction("Index");
 			}
@@ -88,7 +88,7 @@ namespace Artysan_App.Areas.Admin.Controllers
 			}
 			catch (Exception ex)
 			{
-				// Log the exception or handle it appropriately
+				
 				ModelState.AddModelError("", "An error occurred while updating the event.");
 				return View(model);
 			}
