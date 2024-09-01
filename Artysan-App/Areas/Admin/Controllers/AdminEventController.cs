@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Artysan_App.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    public class AdminEventController : Controller
+	[Authorize(Roles = "Admin")]
+	public class AdminEventController : Controller
 	{
 		private readonly IEventService _eventService;
 		private readonly IMapper _mapper;
@@ -53,7 +53,7 @@ namespace Artysan_App.Areas.Admin.Controllers
 			}
 			catch (Exception ex)
 			{
-				
+
 				TempData["Error"] = "Silme işlemi sırasında bir hata oluştu.";
 				return RedirectToAction("Index");
 			}
@@ -70,30 +70,24 @@ namespace Artysan_App.Areas.Admin.Controllers
 
 		// POST: Events/Edit/5
 		[HttpPost]
-		public async Task<IActionResult> Edit(int id, EventViewModel model)
+		public async Task<IActionResult> Edit(EventViewModel model, int id)
 		{
-			if (id != model.Id)
+			if (ModelState.IsValid)
 			{
-				return NotFound();
-			}
+				var result = await _eventService.UpdateAsync(model, id);
 
-			if (!ModelState.IsValid)
-			{
-				return View(model);
+				if (result)
+				{
+					
+					return RedirectToAction("Index");
+				}
+				else
+				{
+					
+					ModelState.AddModelError("", "Güncelleme işlemi başarısız oldu.");
+				}
 			}
-
-			try
-			{
-				await _eventService.Update(model);
-			}
-			catch (Exception ex)
-			{
-				
-				ModelState.AddModelError("", "An error occurred while updating the event.");
-				return View(model);
-			}
-
-			return RedirectToAction("Index");
+			return View(model);
 		}
 	}
 }

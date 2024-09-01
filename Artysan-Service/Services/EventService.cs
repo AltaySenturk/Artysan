@@ -67,27 +67,30 @@ namespace Artysan_Service.Services
 
             return eventViewModel;
         }
-        public async Task<bool> Update(EventViewModel model)
+        public async Task<bool> UpdateAsync(EventViewModel model, int id)
         {
-            if (model == null)
+            var entity = await _eventRepository.GetByIdAsync(id);
+            if (entity == null)
             {
-                throw new ArgumentNullException(nameof(model));
+                // Eðer Entity bulunamazsa hata döndür
+                return false;
             }
+            entity.Name = model.Name;
+            entity.Description = model.Description;
+            entity.Stock = model.Stock;
+            entity.CategoryId = model.CategoryId;
+            entity.EventDate = model.EventDate;
+            entity.ImageUrl = model.ImageUrl;
+            entity.LocationId = (int)model.LocationId;
+            entity.TicketId = (int)model.TicketId;
 
-            var eventEntity = _mapper.Map<Event>(model);
-            _uow.GetRepository<Event>().Update(eventEntity);
+            
+            _uow.GetRepository<Event>().Update(entity);
+            _uow.Commit();
+            return true;
 
-            try
-            {
-                 _uow.CommitAsync();
-                return true; // Update was successful
-            }
-            catch (DbUpdateException)
-            {
-                // Handle specific database update exceptions
-                return false; // Indicate failure
-            }
         }
+
         public void Delete(int id)
         {
             var eventToDelete = _eventRepository.GetById(id);
