@@ -148,7 +148,6 @@ namespace Artysan_App.Controllers
             {
                 TempData["Message"] = "The Operation is Successfully Completed ";
                 HttpContext.Session.Remove("sepet");
-
             }
             else
             {

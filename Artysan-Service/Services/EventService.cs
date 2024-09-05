@@ -67,28 +67,26 @@ namespace Artysan_Service.Services
 
             return eventViewModel;
         }
-        public async Task<bool> UpdateAsync(EventViewModel model, int id)
+        public async Task<bool> Update(EventViewModel model)
         {
-            var entity = await _eventRepository.GetByIdAsync(id);
-            if (entity == null)
+            if (model == null)
             {
-                // Eðer Entity bulunamazsa hata döndür
-                return false;
+                throw new ArgumentNullException(nameof(model));
             }
-            entity.Name = model.Name;
-            entity.Description = model.Description;
-            entity.Stock = model.Stock;
-            entity.CategoryId = model.CategoryId;
-            entity.EventDate = model.EventDate;
-            entity.ImageUrl = model.ImageUrl;
-            entity.LocationId = (int)model.LocationId;
-            entity.TicketId = (int)model.TicketId;
 
-            
-            _uow.GetRepository<Event>().Update(entity);
-            _uow.Commit();
-            return true;
+            var eventEntity = _mapper.Map<Event>(model);
+            _uow.GetRepository<Event>().Update(eventEntity);
 
+            try
+            {
+                _uow.CommitAsync();
+                return true; // Update was successful
+            }
+            catch (DbUpdateException)
+            {
+                // Handle specific database update exceptions
+                return false; // Indicate failure
+            }
         }
 
         public void Delete(int id)
@@ -191,6 +189,29 @@ namespace Artysan_Service.Services
             return _eventRepository.GetById(id);
         }
 
+        public EventViewModel Update(EventViewModel model, int id)
+        {
+            var eventToUpdate = _eventRepository.GetById(id);
+            if (eventToUpdate == null)
+            {
+                return(model);
+            }
+
+            // Update the event properties from the model
+            eventToUpdate.Name = model.Name;
+            eventToUpdate.EventDate = model.EventDate;
+            eventToUpdate.IsPopular = model.IsPopular;
+            eventToUpdate.IsFuture = model.IsFuture;
+            eventToUpdate.Description = model.Description;
+            eventToUpdate.Stock = model.Stock;
+            eventToUpdate.ImageUrl = model.ImageUrl;
+            eventToUpdate.CategoryId = model.CategoryId;
+
+            _eventRepository.Update(eventToUpdate);
+            _uow.Commit();
+
+            return (model);
+        }
 
 
         public async Task<IEnumerable<EventViewModel>> Getting()
@@ -198,6 +219,7 @@ namespace Artysan_Service.Services
             var list = await _uow.GetRepository<Event>().GetAll();
             return _mapper.Map<IEnumerable<EventViewModel>>(list);
         }
+
 
     }
 }

@@ -31,7 +31,8 @@ namespace Artysan_Service.Services
 
         public int AddSale(EventSaleViewModel model)
         {
-            var sale = _uow.GetRepository<EventSaleViewModel>().Add(model);
+            var eventsale = _mapper.Map<EventSale>(model);
+            var sale = _uow.GetRepository<EventSale>().Add(eventsale);
             return sale.Id;
 
         }

@@ -70,24 +70,16 @@ namespace Artysan_App.Areas.Admin.Controllers
 
 		// POST: Events/Edit/5
 		[HttpPost]
-		public async Task<IActionResult> Edit(EventViewModel model, int id)
-		{
-			if (ModelState.IsValid)
-			{
-				var result = await _eventService.UpdateAsync(model, id);
+        public IActionResult Edit(EventViewModel model, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                _eventService.Update(model, id);
+                return RedirectToAction("Index");
+            }
 
-				if (result)
-				{
-					
-					return RedirectToAction("Index");
-				}
-				else
-				{
-					
-					ModelState.AddModelError("", "Güncelleme işlemi başarısız oldu.");
-				}
-			}
-			return View(model);
-		}
-	}
+            return View(model);
+        }
+    }
 }

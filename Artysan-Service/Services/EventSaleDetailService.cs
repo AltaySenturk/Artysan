@@ -30,6 +30,15 @@ namespace Artysan_Service.Services
 
         public bool AddRange(List<CartViewModel> cart, int _paymentId)
         {
+            var eventSale = _uow.GetRepository<EventSale>().GetById(_paymentId);
+            if (eventSale == null)
+            {
+
+                // Handle the case where EventSale doesn't exist
+                // You might want to create it here or throw an exception
+                return false;
+            }
+
             foreach (var item in cart)
             {
                 EventSaleDetail movieSaleDetail = new EventSaleDetail()
@@ -50,8 +59,8 @@ namespace Artysan_Service.Services
             {
 
                 string message = ex.Message;
+                return false;
             }
-            return false;
         }
 
         public async Task Delete(int id)
